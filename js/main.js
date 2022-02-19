@@ -1,39 +1,25 @@
-/* eslint-disable no-shadow */
-
 const getWholeNumber = (startNumber, endNumber) => {
   if (startNumber < 0 || endNumber < 0) {
     return false;
   } if (startNumber === endNumber) {
     return 0;
-  } if (startNumber > endNumber) {
-    const minWholeNumber = Math.floor(endNumber);
-    const maxWholeNumber = Math.ceil(startNumber);
-    const randomNumber = Math.floor(Math.random() * (maxWholeNumber - minWholeNumber + 1)) + minWholeNumber;
-    return randomNumber;
-  }
-  const minWholeNumber = Math.ceil(startNumber);
-  const maxWholeNumber = Math.floor(endNumber);
-  const randomNumber = Math.floor(Math.random() * (maxWholeNumber - minWholeNumber + 1)) + minWholeNumber;
-  return randomNumber;
+  } const maxWholeNumber = Math.floor(Math.max(startNumber, endNumber));
+  const minWholeNumber = Math.ceil(Math.min(startNumber, endNumber));
+  const randomWholeNumber = Math.floor(Math.random() * (maxWholeNumber - minWholeNumber + 1)) + minWholeNumber;
+  return randomWholeNumber;
 };
 
-getWholeNumber(25, 25);
+getWholeNumber(-25, 25);
 
 const getFractionalNumber = (startNumber, endNumber, numberOfCharacters) => {
   if (startNumber < 0 || endNumber < 0) {
     return false;
   } if (startNumber === endNumber) {
     return 0;
-  } if (startNumber > endNumber) {
-    const minWholeNumber = endNumber;
-    const maxWholeNumber = startNumber;
-    const randomNumber = (Math.random() * (maxWholeNumber - minWholeNumber + 1)) + minWholeNumber;
-    return randomNumber.toFixed(numberOfCharacters);
-  }
-  const minWholeNumber = startNumber;
-  const maxWholeNumber = endNumber;
-  const randomNumber = (Math.random() * (maxWholeNumber - minWholeNumber + 1)) + minWholeNumber;
+  } const maxNumber = Math.max(startNumber, endNumber);
+  const minNumber = Math.min(startNumber, endNumber);
+  const randomNumber = Math.random() * (maxNumber - minNumber + 1) + minNumber;
   return randomNumber.toFixed(numberOfCharacters);
 };
 
-getFractionalNumber(1.2, 5.5, 3);
+getFractionalNumber(-5, 5, 2);
