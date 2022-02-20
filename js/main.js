@@ -1,11 +1,11 @@
-const getWholeNumber = (startNumber, endNumber) => {
+const getRandomWholeNumber = (startNumber, endNumber) => {
 
   if (startNumber < 0 || endNumber < 0) {
     return false;
   }
 
   if (startNumber === endNumber) {
-    return 0;
+    return startNumber;
   }
 
   const maxWholeNumber = Math.floor(Math.max(startNumber, endNumber));
@@ -16,24 +16,24 @@ const getWholeNumber = (startNumber, endNumber) => {
 
 };
 
-getWholeNumber(-25, 25);
+getRandomWholeNumber(25, 25);
 
-const getFractionalNumber = (startNumber, endNumber, numberOfCharacters) => {
+const getRandomFractionalNumber = (startNumber, endNumber, numberOfDigits) => {
 
   if (startNumber < 0 || endNumber < 0) {
     return false;
   }
 
   if (startNumber === endNumber) {
-    return 0;
+    return startNumber;
   }
 
   const maxNumber = Math.max(startNumber, endNumber);
   const minNumber = Math.min(startNumber, endNumber);
   const randomNumber = Math.random() * (maxNumber - minNumber + 1) + minNumber;
 
-  return randomNumber.toFixed(numberOfCharacters);
+  return randomNumber.toFixed(numberOfDigits);
 
 };
 
-getFractionalNumber(-5, 5, 2);
+getRandomFractionalNumber(-5, 5, 2);
