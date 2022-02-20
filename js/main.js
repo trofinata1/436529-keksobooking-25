@@ -18,7 +18,7 @@ const getRandomWholeNumber = (startNumber, endNumber) => {
 
 getRandomWholeNumber(25, 25);
 
-const getRandomFractionalNumber = (startNumber, endNumber, numberOfDigits) => {
+const getRandomFractionalNumber = (startNumber, endNumber, fractionalDigits) => {
 
   if (startNumber < 0 || endNumber < 0) {
     return false;
@@ -32,7 +32,7 @@ const getRandomFractionalNumber = (startNumber, endNumber, numberOfDigits) => {
   const minNumber = Math.min(startNumber, endNumber);
   const randomNumber = Math.random() * (maxNumber - minNumber + 1) + minNumber;
 
-  return randomNumber.toFixed(numberOfDigits);
+  return randomNumber.toFixed(fractionalDigits);
 
 };
 
