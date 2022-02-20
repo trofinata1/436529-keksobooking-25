@@ -33,7 +33,7 @@ const getFractionalNumber = (startNumber, endNumber, numberOfCharacters) => {
   const randomNumber = Math.random() * (maxNumber - minNumber + 1) + minNumber;
 
   return randomNumber.toFixed(numberOfCharacters);
-  
+
 };
 
 getFractionalNumber(-5, 5, 2);
