@@ -138,3 +138,5 @@ function getAdd() {
 
 // Генерировать итоговый массив с 10-ю объектами
 const similarAdd = Array.from({length: SIMILAR_ADD_COUNT}, getAdd);
+// eslint-disable-next-line no-console
+console.log(similarAdd);
