@@ -51,7 +51,4 @@ const getRandomArray = (array) => {
   return randomArray;
 };
 
-export {getRandomFractionalNumber};
-export {getRandomElementFromArray};
-export {getRandomWholeNumber};
-export {getRandomArray};
+export {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray};

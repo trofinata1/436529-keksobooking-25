@@ -1,3 +1,4 @@
+
 const indexList = [];
 
 const getOrderedArray = (startNumber, path) => {

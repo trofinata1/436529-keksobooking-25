@@ -1,7 +1,4 @@
-import {getRandomFractionalNumber} from './get-random-article.js';
-import {getRandomElementFromArray} from './get-random-article.js';
-import {getRandomWholeNumber} from './get-random-article.js';
-import {getRandomArray} from './get-random-article.js';
+import {getRandomFractionalNumber, getRandomElementFromArray,getRandomWholeNumber, getRandomArray} from './get-random-article.js';
 import {getOrderedArray} from './get-ordered-article.js';
 
 // Константы
@@ -61,6 +58,7 @@ const MAX_LAT_POINT = 35.70000;
 const MIN_LNG_POINT = 139.70000;
 const MAX_LNG_POINT = 139.80000;
 const COORDINATE_FRACTIONAL_DIGITS = 5;
+const AVATAR_PATH = 'img/avatars/user';
 
 // Генерировать итоговый объект с объектами
 function getAdd() {
@@ -70,7 +68,7 @@ function getAdd() {
   return ({
 
     author: {
-      avatar: getOrderedArray(1, 'img/avatars/user'),
+      avatar: getOrderedArray(1, AVATAR_PATH),
     },
 
     location: {
@@ -95,5 +93,4 @@ function getAdd() {
   });
 }
 
-export {SIMILAR_ADD_COUNT};
-export {getAdd};
+export {SIMILAR_ADD_COUNT, getAdd};
