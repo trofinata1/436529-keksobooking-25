@@ -46,9 +46,9 @@ const PHOTOS = [
 ];
 
 const SIMILAR_ADD_COUNT = 10;
-const MAX_PRICE = 1e9;
-const MAX_ROOMS_COUNT = 50;
-const MAX_GUESTS_NUMBER = 30;
+const MAX_PRICE = 10000;
+const MAX_ROOMS_COUNT = 20;
+const MAX_GUESTS_NUMBER = 20;
 const MIN_LAT_POINT = 35.65000;
 const MAX_LAT_POINT = 35.70000;
 const MIN_LNG_POINT = 139.70000;
