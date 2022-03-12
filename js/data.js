@@ -1,4 +1,3 @@
-/*eslint eol-last: ["error", "always"]*/
 import {TITLES, TYPES, CHECKIN, CHECKOUT, FEATURES, DESCRIPTIONS, PHOTOS, MAX_PRICE, MAX_ROOMS_COUNT, MAX_GUESTS_NUMBER, MIN_LAT_POINT,
   MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS, AVATAR_PATH} from './preset-const.js';
 import {getRandomFractionalNumber, getRandomElementFromArray,getRandomWholeNumber, getRandomArray} from './get-random-entity.js';

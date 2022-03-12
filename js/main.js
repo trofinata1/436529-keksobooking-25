@@ -1,4 +1,3 @@
-/*eslint eol-last: ["error", "always"]*/
 import './get-ordered-entity.js';
 import './get-random-entity.js';
 import './data.js';
