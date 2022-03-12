@@ -1,3 +1,4 @@
+/*eslint eol-last: ["error", "always"]*/
 const TITLES = [
   'Апартаменты-студия, 19 м²',
   'Квартира, 111 м²',
