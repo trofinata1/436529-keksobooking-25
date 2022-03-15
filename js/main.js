@@ -5,3 +5,4 @@ import './get-similar-entity.js';
 import './remove-block.js';
 import './validate-form.js';
 import './library-initialization.js';
+import './load.js';
