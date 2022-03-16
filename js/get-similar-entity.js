@@ -1,4 +1,4 @@
-import {getAdds} from './data.js';
+import {createAdds} from './data.js';
 import {SIMILAR_ADD_COUNT} from './preset-const.js';
 import {removeBlockBySrc, removeBlockByTextContent} from './remove-block.js';
 
@@ -7,7 +7,7 @@ const similarAddTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
 
-const similarAdds = Array.from({length: SIMILAR_ADD_COUNT}, getAdds);
+const similarAdds = Array.from({length: SIMILAR_ADD_COUNT}, createAdds);
 
 similarAdds.forEach(({author, offer}) => {
   // Деструктурируем
@@ -54,27 +54,17 @@ similarAdds.forEach(({author, offer}) => {
   const popupPrice = addElement.querySelector('.popup__text--price');
   popupPrice.textContent = `${price  } ₽/ночь`;
 
-  // Добавляем/удаляем тип
+  // Добавляем тип жилища
+  const typesObject = {
+    flat: 'Квартира',
+    bungalow: 'Бунгало',
+    house: 'Дом',
+    palace: 'Дворец',
+    hotel: 'Отель'
+  };
+
   const popupType = addElement.querySelector('.popup__type');
-  switch (type) {
-    case 'flat':
-      popupType.textContent = 'Квартира';
-      break;
-    case 'bungalow':
-      popupType.textContent = 'Бунгало';
-      break;
-    case 'house':
-      popupType.textContent = 'Дом';
-      break;
-    case 'palace':
-      popupType.textContent = 'Дворец';
-      break;
-    case 'hotel':
-      popupType.textContent = 'Отель';
-      break;
-    default :
-      popupType.remove();
-  }
+  popupType.textContent = typesObject[type];
 
   // Добавляем сообщение с кол-вом комнат и гостей
   let writeRoom = 'комнат';
@@ -141,7 +131,7 @@ similarAdds.forEach(({author, offer}) => {
   removeBlockBySrc(popupAvatar);
 
   // Удаляем блоки при отсутствии данных
-  const blocksArray = [popupTitle, popupAddress, popupPrice, popupType, popupCapacity, popupTime, popupFeatures, popupDescription];
+  const blocksArray = [popupTitle, popupAddress, popupPrice, popupCapacity, popupType, popupTime, popupFeatures, popupDescription];
   blocksArray.forEach ((blocksArrayElement) => {
     removeBlockByTextContent(blocksArrayElement);
   });

@@ -1,17 +1,17 @@
 import {TITLES, TYPES, CHECKIN, CHECKOUT, FEATURES, DESCRIPTIONS, PHOTOS, MAX_PRICE, MAX_ROOMS_COUNT, MAX_GUESTS_NUMBER, MIN_LAT_POINT,
-  MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS, AVATAR_PATH} from './preset-const.js';
+  MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS, AVATAR_PATH, SIMILAR_ADD_COUNT} from './preset-const.js';
 import {getRandomFractionalNumber, getRandomElementFromArray,getRandomWholeNumber, getRandomArray} from './get-random-entity.js';
-import {getOrderedArray} from './get-ordered-entity.js';
+import {getOrderedPictures} from './get-ordered-pictures.js';
 
 // Генерировать итоговый объект с объектами
-function getAdds() {
+function createAdds() {
   const locationLat = getRandomFractionalNumber(MIN_LAT_POINT, MAX_LAT_POINT, COORDINATE_FRACTIONAL_DIGITS);
   const locationLng = getRandomFractionalNumber(MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS);
 
   return ({
 
     author: {
-      avatar: getOrderedArray(1, AVATAR_PATH),
+      avatar: getOrderedPictures(1, AVATAR_PATH, SIMILAR_ADD_COUNT),
     },
 
     location: {
@@ -36,4 +36,4 @@ function getAdds() {
   });
 }
 
-export {getAdds};
+export {createAdds};

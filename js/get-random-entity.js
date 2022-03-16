@@ -43,8 +43,9 @@ const getRandomElementFromArray = (elements) => elements[getRandomWholeNumber(0,
 const getRandomArray = (array) => {
 
   const randomArray = [];
+  const maxNumber = getRandomWholeNumber(0, array.length - 1) - 1;
 
-  for (let i = 0; i <= getRandomWholeNumber(0, array.length - 1); i++) {
+  for (let i = 0; i <= maxNumber; i++) {
     randomArray.push(array[i]);
   }
 
