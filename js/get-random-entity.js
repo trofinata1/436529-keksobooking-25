@@ -39,8 +39,8 @@ const getRandomFractionalNumber = (startNumber, endNumber, fractionalDigits = 2)
 // Случайный элемент массива
 const getRandomElementFromArray = (elements) => elements[getRandomWholeNumber(0, elements.length - 1)];
 
-// Собрать случайный массив из элементов другого массива
-const getRandomArray = (array) => {
+// Собрать случайный массив из элементов другого массива (может быть пустым)
+const getRandomArrayWithNull = (array) => {
 
   const randomArray = [];
   const maxNumber = getRandomWholeNumber(0, array.length - 1) - 1;
@@ -52,4 +52,17 @@ const getRandomArray = (array) => {
   return randomArray;
 };
 
-export {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray};
+// Собрать случайный массив из элементов другого массива (не может быть пустым)
+const getRandomArray = (array) => {
+
+  const randomArray = [];
+  const maxNumber = getRandomWholeNumber(0, array.length - 1);
+
+  for (let i = 0; i <= maxNumber; i++) {
+    randomArray.push(array[i]);
+  }
+
+  return randomArray;
+};
+
+export {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray, getRandomArrayWithNull};

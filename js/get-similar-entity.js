@@ -1,6 +1,7 @@
 import {createAdds} from './data.js';
 import {SIMILAR_ADD_COUNT} from './preset-const.js';
 import {removeBlockBySrc, removeBlockByTextContent} from './remove-block.js';
+import {addPhotos} from './add-photos.js';
 
 const similarListElement = document.querySelector('.map__canvas');
 const similarAddTemplate = document.querySelector('#card')
@@ -67,27 +68,34 @@ similarAdds.forEach(({author, offer}) => {
   popupType.textContent = typesObject[type];
 
   // Добавляем сообщение с кол-вом комнат и гостей
-  let writeRoom = 'комнат';
-  let writeGuest = 'гостей';
+  const roomsCountObject = {
+    1: 'комната',
+    2: 'комнаты',
+    3: 'комнаты',
+    4: 'комнаты',
+    5: 'комнат',
+    6: 'комнат',
+    7: 'комнат',
+    8: 'комнат',
+    9: 'комнат',
+    10: 'комнат'
+  };
 
-  switch (rooms) {
-    case 1:
-      writeRoom = 'комната';
-      break;
-    case 2:
-    case 3:
-    case 4:
-      writeRoom = 'комнаты';
-  }
-
-  switch (guests) {
-    case 1:
-      writeGuest = 'гостя';
-      break;
-  }
+  const guestsCountObject = {
+    1: 'гостя',
+    2: 'гостей',
+    3: 'гостей',
+    4: 'гостей',
+    5: 'гостей',
+    6: 'гостей',
+    7: 'гостей',
+    8: 'гостей',
+    9: 'гостей',
+    10: 'гостей',
+  };
 
   const popupCapacity = addElement.querySelector('.popup__text--capacity');
-  popupCapacity.textContent = `${rooms } ${writeRoom} для ${guests } ${writeGuest}`;
+  popupCapacity.textContent = `${rooms } ${roomsCountObject[rooms] } для ${guests } ${guestsCountObject[guests] }`;
 
   // Добавляем сообщение с датами заезда и выезда
   const popupTime = addElement.querySelector('.popup__text--time');
@@ -114,21 +122,13 @@ similarAdds.forEach(({author, offer}) => {
   // Добавляем/удаляем фото
   const popupPhoto = addElement.querySelector('.popup__photo');
   const popupPhotos = addElement.querySelector('.popup__photos');
-  const photoArray = photos;
+  popupPhotos.removeChild(popupPhoto);
 
-  photoArray.forEach((photo) => {
-    popupPhoto.src = photo;
-    const addPhoto = popupPhoto.cloneNode(true);
-    popupPhotos.insertAdjacentElement('beforeend', addPhoto);
-  });
-
-  const photoCollection = addElement.querySelectorAll('.popup__photo');
-  photoCollection[photoCollection.length - 1].remove();
+  addPhotos(photos, popupPhoto, popupPhotos);
 
   // Добавляем аватар
   const popupAvatar = addElement.querySelector('.popup__avatar');
   popupAvatar.src = avatar;
-  removeBlockBySrc(popupAvatar);
 
   // Удаляем блоки при отсутствии данных
   const blocksArray = [popupTitle, popupAddress, popupPrice, popupCapacity, popupType, popupTime, popupFeatures, popupDescription];
