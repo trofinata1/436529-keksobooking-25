@@ -1,13 +1,9 @@
-const removeBlockBySrc = (block) => {
-  if (block.src.includes('undefined')) {
-    block.remove();
-  }
+const removeBlock = (obj) => {
+  Object.entries(obj).forEach(([key, value]) => {
+    if (value[key] === '') {
+      Object.values(value)[0].remove();
+    }
+  });
 };
 
-const removeBlockByTextContent = (block) => {
-  if (block.textContent.includes('undefined')) {
-    block.remove();
-  }
-};
-
-export {removeBlockBySrc, removeBlockByTextContent};
+export {removeBlock};

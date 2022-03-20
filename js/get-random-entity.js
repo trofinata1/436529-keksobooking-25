@@ -36,7 +36,7 @@ const getRandomFractionalNumber = (startNumber, endNumber, fractionalDigits = 2)
 
 };
 
-// Случайный элемент массива
+// Случайный элемент массива, может повторяться
 const getRandomElementFromArray = (elements) => elements[getRandomWholeNumber(0, elements.length - 1)];
 
 // Собрать случайный массив из элементов другого массива (может быть пустым)

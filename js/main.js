@@ -1,3 +1,3 @@
-import './get-ordered-pictures.js';
+import './get-ordered-path.js';
 import './get-random-entity.js';
-import './get-similar-entity.js';
+import './set-similar-adds.js';
