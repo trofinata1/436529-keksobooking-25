@@ -1,17 +1,17 @@
-import {TITLES, TYPES, CHECKIN, CHECKOUT, FEATURES, DESCRIPTIONS, PHOTOS, MAX_PRICE, MAX_ROOMS_COUNT, MAX_GUESTS_NUMBER, MIN_LAT_POINT,
-  MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS, AVATAR_PATH} from './preset-const.js';
-import {getRandomFractionalNumber, getRandomElementFromArray,getRandomWholeNumber, getRandomArray} from './get-random-entity.js';
-import {getOrderedArray} from './get-ordered-entity.js';
+import {TITLES, TYPES, CHECKIN, CHECKOUT, FEATURES, DESCRIPTIONS, PHOTOS, MAX_PRICE, MAX_ROOMS_COUNT, MAX_GUESTS_COUNT, MIN_LAT_POINT,
+  MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS} from './preset-const.js';
+import {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray, getRandomArrayWithNull} from './get-random-entity.js';
+import {arrayAvatarPath, getOrderedElementFromArray} from './get-ordered-path.js';
 
 // Генерировать итоговый объект с объектами
-function getAdd() {
+function createAdds() {
   const locationLat = getRandomFractionalNumber(MIN_LAT_POINT, MAX_LAT_POINT, COORDINATE_FRACTIONAL_DIGITS);
   const locationLng = getRandomFractionalNumber(MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS);
 
   return ({
 
     author: {
-      avatar: getOrderedArray(1, AVATAR_PATH),
+      avatar: getOrderedElementFromArray(arrayAvatarPath),
     },
 
     location: {
@@ -25,10 +25,10 @@ function getAdd() {
       price: getRandomWholeNumber(1, MAX_PRICE),
       type: getRandomElementFromArray(TYPES),
       rooms: getRandomWholeNumber(1, MAX_ROOMS_COUNT),
-      guests: getRandomWholeNumber(1, MAX_GUESTS_NUMBER),
+      guests: getRandomWholeNumber(1, MAX_GUESTS_COUNT),
       checkin: getRandomElementFromArray(CHECKIN),
       checkout: getRandomElementFromArray(CHECKOUT),
-      features: getRandomArray(FEATURES),
+      features: getRandomArrayWithNull(FEATURES),
       description: getRandomElementFromArray(DESCRIPTIONS),
       photos: getRandomArray(PHOTOS)
     }
@@ -36,4 +36,4 @@ function getAdd() {
   });
 }
 
-export {getAdd};
+export {createAdds};
