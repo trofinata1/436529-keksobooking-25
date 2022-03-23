@@ -1,7 +1,6 @@
 import {TITLES, TYPES, CHECKIN, CHECKOUT, FEATURES, DESCRIPTIONS, PHOTOS, MAX_PRICE, MAX_ROOMS_COUNT, MAX_GUESTS_COUNT, MIN_LAT_POINT,
   MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS} from './preset-const.js';
-import {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray, getRandomArrayWithNull} from './get-random-entity.js';
-import {arrayAvatarPath, getOrderedElementFromArray} from './get-ordered-path.js';
+import {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray, getRandomArrayWithNull, arrayAvatarPath, getOrderedElementFromArray} from './utils.js';
 
 // Генерировать итоговый объект с объектами
 function createAdds() {
