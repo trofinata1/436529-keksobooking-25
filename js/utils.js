@@ -1,6 +1,6 @@
 import {roomsCountObject, guestsCountObject} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH} from './preset-const.js';
-import {pristine} from './library-initialization.js';
+import {pristine} from './libs/pristin-init.js';
 
 // Случайное целое положительное число
 export const getRandomWholeNumber = (startNumber, endNumber) => {
@@ -136,8 +136,14 @@ export const removeBlock = (obj) => {
   });
 };
 
-// Удаляем сообщение пристин, если поле не в фокусе
-export const deleteValidateError = (field, fieldset) => {
-  field.onblur = () => pristine.reset(fieldset);
-};
+// Функция для удаления ошибок пристины
+export const deleteErrors = (evt) => {
 
+  const errorMessage = evt.target.nextElementSibling;
+
+  if (errorMessage.matches('.pristine-error')) {
+
+    pristine.reset();
+
+  }
+};

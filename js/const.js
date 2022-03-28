@@ -11,6 +11,7 @@ export const capacityField = form.querySelector('[name="capacity"]');
 export const capacityFieldset = document.getElementById('capacity_fieldset');
 export const roomsFieldset = document.getElementById('room_number_fieldset');
 export const priceFieldset = document.getElementById('price_fieldset');
+export const formInputs = document.querySelectorAll('.ad-form__before-error');
 
 export const valuesDivs = [
   document.getElementById('price')
@@ -48,3 +49,5 @@ export const guestsOption = {
   '3': ['3'],
   '0': ['100']
 };
+
+export const roomsGuestsErrorMessage = 'Выберите другое значение';

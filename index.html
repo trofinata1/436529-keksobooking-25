@@ -89,7 +89,7 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide" id="title_fieldset">
           <label class="ad-form__label" for="title">Заголовок объявления</label>
-          <input class="ad-form__input" id="title" name="title" type="text" placeholder="Милая, уютная квартирка в центре Токио" minlength="30" maxlength="100" required data-pristine-required-message="Обязательное поле" data-pristine-minlength-message="Минимальная длина 30 символов"
+          <input class="ad-form__input ad-form__before-error" id="title" name="title" type="text" placeholder="Милая, уютная квартирка в центре Токио" minlength="30" maxlength="100" required data-pristine-required-message="Обязательное поле" data-pristine-minlength-message="Минимальная длина 30 символов"
           data-pristine-maxlength-message="Максимальная длина 100 символов">
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">
@@ -130,7 +130,7 @@
         </fieldset>
         <fieldset class="ad-form__element" id="room_number_fieldset">
           <label class="ad-form__label" for="room_number">Количество комнат</label>
-          <select id="room_number" name="rooms">
+          <select id="room_number" class="ad-form__before-error" name="rooms">
             <option value="1" selected>1 комната</option>
             <option value="2">2 комнаты</option>
             <option value="3">3 комнаты</option>
@@ -139,7 +139,7 @@
         </fieldset>
         <fieldset class="ad-form__element" id="capacity_fieldset">
           <label class="ad-form__label" for="capacity">Количество мест</label>
-          <select id="capacity" name="capacity">
+          <select id="capacity" class="ad-form__before-error" name="capacity">
             <option value="3" selected>для 3 гостей</option>
             <option value="2">для 2 гостей</option>
             <option value="1">для 1 гостя</option>

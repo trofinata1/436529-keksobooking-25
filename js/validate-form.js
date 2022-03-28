@@ -1,7 +1,7 @@
-import './library-initialization.js';
-import {form, range, capacityField, roomsField, roomsOption, guestsOption, capacityFieldset, roomsFieldset, valuesDivs} from './const.js';
-import {pristine, pristinePrice} from './library-initialization.js';
-import {deleteValidateError} from './utils.js';
+import './libs/noUiSlider-init.js';
+import {form, range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage, formInputs} from './const.js';
+import {pristine} from './libs/pristin-init.js';
+import {deleteErrors} from './utils.js';
 
 // Валидируем поля с помощью Пристин
 form.addEventListener('submit', (evt) => {
@@ -13,12 +13,8 @@ form.addEventListener('submit', (evt) => {
 const validateRooms = () => roomsOption[roomsField.value].includes(capacityField.value);
 const validateGuests = () => guestsOption[capacityField.value].includes(roomsField.value);
 
-pristine.addValidator(roomsField, validateRooms, 'выберите другое значение');
-pristine.addValidator(capacityField, validateGuests, 'выберите другое значение');
-
-// Убираем подписи об ошибках, когда инпуты не в фокусе
-deleteValidateError(capacityField, capacityFieldset);
-deleteValidateError(roomsField, roomsFieldset);
+pristine.addValidator(roomsField, validateRooms, roomsGuestsErrorMessage);
+pristine.addValidator(capacityField, validateGuests, roomsGuestsErrorMessage);
 
 // Привязываем значения ползунка к инпуту и убираем сообщение об ошибке, когда оно не нужно
 range.noUiSlider.on('update', (values, handle) => {
@@ -32,6 +28,11 @@ range.noUiSlider.on('update', (values, handle) => {
   });
 
   if (isFinite(valuesDivs[handle].value) ) {
-    pristinePrice.reset();
+    pristine.reset();
   }
+});
+
+// Убираем сообщение об ошибке при отсутствии фокуса
+formInputs.forEach((input) => {
+  input.addEventListener('blur', deleteErrors);
 });
