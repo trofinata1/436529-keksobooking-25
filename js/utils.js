@@ -1,4 +1,4 @@
-import {roomsCountObject, guestsCountObject} from './const.js';
+import {roomsCountObject, guestsCountObject, countForCorrectEnd} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
@@ -84,7 +84,7 @@ export const addPhotos = (array, blockPhoto, blockPhotos) => {
 export const getCorrectKeyForRooms = (count) => {
   if (count === 1) {
     return roomsCountObject.alone;
-  } else if (count > 1 && count <= 4) {
+  } else if (count > 1 && count <= countForCorrectEnd) {
     return roomsCountObject.some;
   } return roomsCountObject.many;
 };

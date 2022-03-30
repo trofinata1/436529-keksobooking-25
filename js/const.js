@@ -3,18 +3,18 @@ export const similarAddTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
 export const form = document.querySelector('.ad-form');
-export const range = document.getElementById('range');
-export const titleInput = document.getElementById('title');
-export const titleFieldset = document.getElementById('title_fieldset');
+export const range = document.querySelector('#range');
+export const titleInput = document.querySelector('#title');
+export const titleFieldset = document.querySelector('#title_fieldset');
 export const roomsField = form.querySelector('[name="rooms"]');
 export const capacityField = form.querySelector('[name="capacity"]');
-export const capacityFieldset = document.getElementById('capacity_fieldset');
-export const roomsFieldset = document.getElementById('room_number_fieldset');
-export const priceFieldset = document.getElementById('price_fieldset');
+export const capacityFieldset = document.querySelector('#capacity_fieldset');
+export const roomsFieldset = document.querySelector('#room_number_fieldset');
+export const priceFieldset = document.querySelector('#price_fieldset');
 export const formInputs = document.querySelectorAll('.ad-form__before-error');
 
 export const valuesDivs = [
-  document.getElementById('price')
+  document.querySelector('#price')
 ];
 
 export const typesObject = {
@@ -30,6 +30,8 @@ export const roomsCountObject = {
   'some': 'комнаты',
   'many': 'комнат'
 };
+
+export const countForCorrectEnd = 4;
 
 export const guestsCountObject = {
   'alone': 'гостя',
