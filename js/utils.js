@@ -111,15 +111,6 @@ export const getOrderedPictures = (array, path) => {
 
 getOrderedPictures(AVATAR_ARRAY, AVATAR_PATH);
 
-// Получать один элемент из массива по-порядку при каждом вызове функции setAdd()
-let i = 0;
-
-export const getOrderedElementFromArray = (array) => {
-  const arrayElement = array[i];
-  i++;
-  return arrayElement;
-};
-
 // Подставляем текстовый контент
 export const setTextContent = (obj) => {
   Object.entries(obj).forEach(([, value]) => {
