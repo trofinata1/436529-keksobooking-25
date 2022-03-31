@@ -21,7 +21,7 @@ export const valuesDivs = [
   document.querySelector('#price')
 ];
 
-export const typesObject = {
+export const types = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
   house: 'Дом',
@@ -29,13 +29,13 @@ export const typesObject = {
   hotel: 'Отель'
 };
 
-export const roomsCountObject = {
+export const roomsCount = {
   'alone': 'комната',
   'some': 'комнаты',
   'many': 'комнат'
 };
 
-export const guestsCountObject = {
+export const guestsCount = {
   'alone': 'гостя',
   'many': 'гостей',
 };
@@ -54,7 +54,7 @@ export const guestsOption = {
   '0': ['100']
 };
 
-export const typeMinPriceObject = {
+export const typesMinPrice = {
   bungalow: '0',
   flat: '1000',
   hotel: '3000',
