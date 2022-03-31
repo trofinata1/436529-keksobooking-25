@@ -10,8 +10,12 @@ export const roomsField = form.querySelector('[name="rooms"]');
 export const capacityField = form.querySelector('[name="capacity"]');
 export const capacityFieldset = document.querySelector('#capacity_fieldset');
 export const roomsFieldset = document.querySelector('#room_number_fieldset');
+export const priceField = document.querySelector('#price');
 export const priceFieldset = document.querySelector('#price_fieldset');
-export const formInputs = document.querySelectorAll('.ad-form__before-error');
+export const formInputs = document.querySelectorAll('.ad-form__watch-focus');
+export const timeFieldset = document.querySelector('#time-fieldset');
+export const timeFields = timeFieldset.querySelectorAll('select');
+export const typeField = document.querySelector('#type');
 
 export const valuesDivs = [
   document.querySelector('#price')
@@ -48,6 +52,14 @@ export const guestsOption = {
   '2': ['2', '3'],
   '3': ['3'],
   '0': ['100']
+};
+
+export const typeMinPriceObject = {
+  bungalow: '0',
+  flat: '1000',
+  hotel: '3000',
+  house: '5000',
+  palace: '10000'
 };
 
 export const roomsGuestsErrorMessage = 'Выберите другое значение';
