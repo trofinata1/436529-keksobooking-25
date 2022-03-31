@@ -40,7 +40,6 @@ formInputs.forEach((input) => {
 
 // Меняем плейсхолдер в зависимости от типа жилья
 typeField.addEventListener('change', () => {
-  
   const typeValue = typeField.value;
   const attributeValue = typeMinPriceObject[typeValue];
 
