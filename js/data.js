@@ -1,17 +1,16 @@
 import {TITLES, TYPES, CHECKIN, CHECKOUT, FEATURES, DESCRIPTIONS, PHOTOS, MAX_PRICE, MAX_ROOMS_COUNT, MAX_GUESTS_COUNT, MIN_LAT_POINT,
   MAX_LAT_POINT, MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS} from './preset-const.js';
-import {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray, getRandomArrayWithNull} from './get-random-entity.js';
-import {arrayAvatarPath, getOrderedElementFromArray} from './get-ordered-path.js';
+import {getRandomFractionalNumber, getRandomElementFromArray, getRandomWholeNumber, getRandomArray, getRandomArrayWithNull, arrayAvatarPath} from './utils.js';
 
 // Генерировать итоговый объект с объектами
 function createAdds() {
-  const locationLat = getRandomFractionalNumber(MIN_LAT_POINT, MAX_LAT_POINT, COORDINATE_FRACTIONAL_DIGITS);
-  const locationLng = getRandomFractionalNumber(MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS);
+  const locationLat = getRandomFractionalNumber(MIN_LAT_POINT, MAX_LAT_POINT, COORDINATE_FRACTIONAL_DIGITS);// 35.65
+  const locationLng = getRandomFractionalNumber(MIN_LNG_POINT, MAX_LNG_POINT, COORDINATE_FRACTIONAL_DIGITS);// 139.8
 
   return ({
 
     author: {
-      avatar: getOrderedElementFromArray(arrayAvatarPath),
+      avatar: getRandomElementFromArray(arrayAvatarPath),
     },
 
     location: {

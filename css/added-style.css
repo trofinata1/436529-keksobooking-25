@@ -1,0 +1,17 @@
+.ad-form__error-text {
+  color: red;
+}
+
+.ad-form__error-text {
+  position: absolute;
+  bottom: 0;
+  color: red;
+}
+
+.has-danger {
+  position: relative;
+}
+
+.ad-form__element--error-up .ad-form__error-text {
+  top: 100px;
+}

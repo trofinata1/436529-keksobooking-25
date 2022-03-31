@@ -1,9 +1,6 @@
 import {similarListElement, similarAddTemplate, typesObject} from './const.js';
-import {removeBlock} from './remove-block.js';
-import {addPhotos} from './add-photos.js';
+import {getCorrectKeyForRooms, getCorrectKeyForGuests, addPhotos, removeBlock, setTextContent} from './utils.js';
 import {similarAdds} from './get-similar-adds.js';
-import {getCorrectKeyForRooms, getCorrectKeyForGuests} from './get-correct-ending.js';
-import {setTextContent} from './set-text-content.js';
 
 const setAdd = () => {
 
