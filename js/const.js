@@ -31,8 +31,6 @@ export const roomsCountObject = {
   'many': 'комнат'
 };
 
-export const countForCorrectEnd = 4;
-
 export const guestsCountObject = {
   'alone': 'гостя',
   'many': 'гостей',

@@ -56,4 +56,5 @@ export const MAX_LAT_POINT = 35.70000;
 export const MIN_LNG_POINT = 139.70000;
 export const MAX_LNG_POINT = 139.80000;
 export const COORDINATE_FRACTIONAL_DIGITS = 5;
+export const COUNT_FOR_CORRECT_END = 4;
 export const AVATAR_PATH = 'img/avatars/user';

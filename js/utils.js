@@ -1,5 +1,5 @@
-import {roomsCountObject, guestsCountObject, countForCorrectEnd} from './const.js';
-import {AVATAR_ARRAY, AVATAR_PATH} from './preset-const.js';
+import {roomsCountObject, guestsCountObject} from './const.js';
+import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
 // Случайное целое положительное число
@@ -84,7 +84,7 @@ export const addPhotos = (array, blockPhoto, blockPhotos) => {
 export const getCorrectKeyForRooms = (count) => {
   if (count === 1) {
     return roomsCountObject.alone;
-  } else if (count > 1 && count <= countForCorrectEnd) {
+  } else if (count > 1 && count <= COUNT_FOR_CORRECT_END) {
     return roomsCountObject.some;
   } return roomsCountObject.many;
 };
