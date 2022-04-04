@@ -1,4 +1,4 @@
-import {roomsCountObject, guestsCountObject, timeFields} from './const.js';
+import {timeFields, roomsCount, guestsCount, allFormFilterChildren, form, mapFilter,range} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
@@ -83,16 +83,16 @@ export const addPhotos = (array, blockPhoto, blockPhotos) => {
 // Генерируем разные окончания в текстовом блоке
 export const getCorrectKeyForRooms = (count) => {
   if (count === 1) {
-    return roomsCountObject.alone;
+    return roomsCount.alone;
   } else if (count > 1 && count <= COUNT_FOR_CORRECT_END) {
-    return roomsCountObject.some;
-  } return roomsCountObject.many;
+    return roomsCount.some;
+  } return roomsCount.many;
 };
 
 export const getCorrectKeyForGuests = (count) => {
   if (count === 1) {
-    return guestsCountObject.alone;
-  } return guestsCountObject.many;
+    return guestsCount.alone;
+  } return guestsCount.many;
 };
 
 // Получить массив из путей до картинок
@@ -146,4 +146,42 @@ export const setValue = (evt) => {
     timeField.value = evt.target.value;
   });
 
+};
+
+// Инактивация элементов
+export const disableInterface = () => {
+
+  form.classList.add('ad-form--disabled');
+  mapFilter.classList.add('map__filters--disabled');
+
+  range.setAttribute('disabled', 'disabled');
+
+  allFormFilterChildren.forEach((children) => {
+    children.forEach((child) => {
+      child.setAttribute('disabled', 'disabled');
+    });
+
+  });
+};
+
+// Активация элементов
+
+//Следующие три строчки пока только чтобы проверить, работает ли снятие неактивности при загрузке. В след. ДЗ уберу это и сделаю уже под нормальную загрузку карты с методом LeafLet 'load'
+const scriptLeaflet = document.createElement('script');
+scriptLeaflet.src = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js';
+document.body.append(scriptLeaflet);
+
+export const enableInterface = () => {
+  scriptLeaflet.onload = () => {
+    form.classList.remove('ad-form--disabled');
+    mapFilter.classList.remove('map__filters--disabled');
+
+    range.removeAttribute('disabled');
+
+    allFormFilterChildren.forEach((children) => {
+      children.forEach((child) => {
+        child.removeAttribute('disabled');
+      });
+    });
+  };
 };

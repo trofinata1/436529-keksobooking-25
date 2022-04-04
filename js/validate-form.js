@@ -1,6 +1,6 @@
 import './libs/noUiSlider-init.js';
 import {form, range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage,
-  typeField, priceField, typeMinPriceObject, timeFieldset, formInputs} from './const.js';
+  typeField, priceField, typesMinPrice, timeFieldset, formInputs} from './const.js';
 import {pristine} from './libs/pristin-init.js';
 import {deleteErrors, setValue} from './utils.js';
 
@@ -41,7 +41,7 @@ formInputs.forEach((input) => {
 // Меняем плейсхолдер в зависимости от типа жилья
 typeField.addEventListener('change', () => {
   const typeValue = typeField.value;
-  const attributeValue = typeMinPriceObject[typeValue];
+  const attributeValue = typesMinPrice[typeValue];
 
   priceField.setAttribute('min', attributeValue);
   priceField.setAttribute('placeholder', attributeValue);
