@@ -1,4 +1,4 @@
-import {roomsCountObject, guestsCountObject} from './const.js';
+import {roomsCountObject, guestsCountObject, timeFields} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
@@ -137,4 +137,13 @@ export const deleteErrors = (evt) => {
     pristine.reset();
 
   }
+};
+
+// Синхронизация значений селектов
+export const setValue = (evt) => {
+
+  timeFields.forEach((timeField) => {
+    timeField.value = evt.target.value;
+  });
+
 };
