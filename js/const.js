@@ -2,8 +2,8 @@ export const similarListElement = document.querySelector('.map__canvas');
 export const similarAddTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
-export const form = document.querySelector('.ad-form');
 export const range = document.querySelector('#range');
+export const form = document.querySelector('.ad-form');
 export const titleInput = document.querySelector('#title');
 export const titleFieldset = document.querySelector('#title_fieldset');
 export const roomsField = form.querySelector('[name="rooms"]');
