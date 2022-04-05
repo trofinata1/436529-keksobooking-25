@@ -1,4 +1,4 @@
-import {timeFields, roomsCount, guestsCount, allFormFilterChildren, form, mapFilter, range} from './const.js';
+import {timeFields, roomsCount, guestsCount, allFormFilterChildren, form, mapFilter} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
