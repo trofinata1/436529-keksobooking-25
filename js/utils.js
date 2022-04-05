@@ -1,4 +1,4 @@
-import {timeFields, roomsCount, guestsCount, allFormFilterChildren, form, mapFilter,range} from './const.js';
+import {timeFields, roomsCount, guestsCount, allFormFilterChildren, form, mapFilter, range} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
@@ -154,13 +154,8 @@ export const disableInterface = () => {
   form.classList.add('ad-form--disabled');
   mapFilter.classList.add('map__filters--disabled');
 
-  range.setAttribute('disabled', 'disabled');
-
-  allFormFilterChildren.forEach((children) => {
-    children.forEach((child) => {
-      child.setAttribute('disabled', 'disabled');
-    });
-
+  allFormFilterChildren.forEach((child) => {
+    child.setAttribute('disabled', 'disabled');
   });
 };
 
@@ -176,12 +171,8 @@ export const enableInterface = () => {
     form.classList.remove('ad-form--disabled');
     mapFilter.classList.remove('map__filters--disabled');
 
-    range.removeAttribute('disabled');
-
-    allFormFilterChildren.forEach((children) => {
-      children.forEach((child) => {
-        child.removeAttribute('disabled');
-      });
+    allFormFilterChildren.forEach((child) => {
+      child.removeAttribute('disabled', 'disabled');
     });
   };
 };

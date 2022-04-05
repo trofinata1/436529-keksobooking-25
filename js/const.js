@@ -16,10 +16,10 @@ export const formInputs = document.querySelectorAll('.ad-form__watch-focus');
 export const timeFieldset = document.querySelector('#time-fieldset');
 export const timeFields = timeFieldset.querySelectorAll('select');
 export const typeField = document.querySelector('#type');
-export const formChildren = Array.from(form.children);
 export const mapFilter = document.querySelector('.map__filters');
-export const mapFilterChildren = Array.from(mapFilter.children);
-export const allFormFilterChildren = [formChildren, mapFilterChildren];
+const formChildren = form.querySelectorAll('*');
+const filterChildren = mapFilter.querySelectorAll('*');
+export const allFormFilterChildren = [...formChildren, ...filterChildren];
 
 export const valuesDivs = [
   document.querySelector('#price')
