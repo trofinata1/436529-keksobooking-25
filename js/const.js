@@ -17,9 +17,10 @@ export const timeFieldset = document.querySelector('#time-fieldset');
 export const timeFields = timeFieldset.querySelectorAll('select');
 export const typeField = document.querySelector('#type');
 export const mapFilter = document.querySelector('.map__filters');
-const formChildren = form.querySelectorAll('*');
-const filterChildren = mapFilter.querySelectorAll('*');
-export const allFormFilterChildren = [...formChildren, ...filterChildren];
+const formChildren = form.querySelectorAll('fieldset');
+const filterChildrenSelect = mapFilter.querySelectorAll('select');
+const filterChildrenFieldset = mapFilter.querySelectorAll('fieldset');
+export const allFormFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
 
 export const valuesDivs = [
   document.querySelector('#price')
