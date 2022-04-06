@@ -2,8 +2,8 @@ export const similarListElement = document.querySelector('.map__canvas');
 export const similarAddTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
-export const form = document.querySelector('.ad-form');
 export const range = document.querySelector('#range');
+export const form = document.querySelector('.ad-form');
 export const titleInput = document.querySelector('#title');
 export const titleFieldset = document.querySelector('#title_fieldset');
 export const roomsField = form.querySelector('[name="rooms"]');
@@ -16,6 +16,11 @@ export const formInputs = document.querySelectorAll('.ad-form__watch-focus');
 export const timeFieldset = document.querySelector('#time-fieldset');
 export const timeFields = timeFieldset.querySelectorAll('select');
 export const typeField = document.querySelector('#type');
+export const mapFilter = document.querySelector('.map__filters');
+const formChildren = form.querySelectorAll('fieldset');
+const filterChildrenSelect = mapFilter.querySelectorAll('select');
+const filterChildrenFieldset = mapFilter.querySelectorAll('fieldset');
+export const allFormFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
 
 export const valuesDivs = [
   document.querySelector('#price')

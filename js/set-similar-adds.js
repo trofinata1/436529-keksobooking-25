@@ -1,4 +1,4 @@
-import {similarListElement, similarAddTemplate, typesObject} from './const.js';
+import {similarListElement, similarAddTemplate, typesMinPrice} from './const.js';
 import {getCorrectKeyForRooms, getCorrectKeyForGuests, addPhotos, removeBlock, setTextContent} from './utils.js';
 import {similarAdds} from './get-similar-adds.js';
 
@@ -84,7 +84,7 @@ const setAdd = () => {
     popupPrice.textContent = `${price  } ₽/ночь`;
 
     // Добавляем тип жилища
-    popupType.textContent = typesObject[type];
+    popupType.textContent = typesMinPrice[type];
 
     // Добавляем сообщение с кол-вом комнат и гостей
     popupCapacity.textContent = `${rooms } ${getCorrectKeyForRooms(rooms) } для ${guests } ${getCorrectKeyForGuests(guests) }`;

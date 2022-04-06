@@ -358,6 +358,11 @@ fieldset {
   font-size: 14px;
 }
 
+.ad-form__element--error-up .ad-form__error-text {
+  top: 100px;
+}
+
+
 .ad-form__element--wide {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
@@ -410,6 +415,16 @@ fieldset {
 
 .ad-form__element--time select:first-of-type {
   margin-right: 14px;
+}
+
+.has-danger {
+  position: relative;
+}
+
+.ad-form__error-text {
+  position: absolute;
+  bottom: 0;
+  color: red;
 }
 
 .features legend {
