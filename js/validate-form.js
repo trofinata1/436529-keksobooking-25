@@ -1,7 +1,8 @@
 import './libs/noUiSlider-init.js';
+import {pristine} from './libs/pristin-init.js';
+
 import {form, range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage,
   typeField, priceField, typesMinPrice, timeFieldset, formInputs} from './const.js';
-import {pristine} from './libs/pristin-init.js';
 import {deleteErrors, setValue} from './utils.js';
 
 // Валидируем поля с помощью Пристин
