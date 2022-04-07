@@ -1,4 +1,4 @@
-import {BASE_COORDS} from '../preset-const.js';
+import {BASE_COORDS, ZOOM} from '../preset-const.js';
 import {enableInterface} from '../utils.js';
 
 // Добавляем карту
@@ -6,7 +6,7 @@ export const map = L.map('map')
 
   .on('load', () => enableInterface())
 
-  .setView(BASE_COORDS, 12);
+  .setView(BASE_COORDS, ZOOM);
 
 // Добавляем слой с нужной картой
 L.tileLayer(

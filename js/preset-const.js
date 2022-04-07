@@ -63,3 +63,5 @@ export const BASE_COORDS = {
   lat: 35.67500,
   lng: 139.75000
 };
+
+export const ZOOM = 12;
