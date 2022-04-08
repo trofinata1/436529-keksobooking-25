@@ -23,6 +23,10 @@ const filterChildrenFieldset = mapFilter.querySelectorAll('fieldset');
 export const allFormAndFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
 export const submitButton = document.querySelector('.ad-form__submit');
 export const resetButton = document.querySelector('.ad-form__reset');
+export const success = document.querySelector('#success');
+export const body = document.querySelector('.page-body');
+export const errorButton = document.querySelector('.error__button');
+export const error = document.querySelector('.error');
 
 export const valuesDivs = [
   document.querySelector('#price')

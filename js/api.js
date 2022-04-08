@@ -24,9 +24,9 @@ export const sendData = (onSuccess, onFail, body) => {
     ' https://25.javascript.pages.academy/keksobooking',
     {
       method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // },
       body,
     },
   )
@@ -46,6 +46,6 @@ export const sendData = (onSuccess, onFail, body) => {
     .catch(() => {
 
       onFail('Не удалось отправить форму. Попробуйте ещё раз');
-      
+
     });
 };

@@ -184,37 +184,3 @@ export const unblockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = 'Опубликовать';
 };
-
-const isPressedEscapeKey = (evt) => evt.key === 'Escape';
-
-const onDocumentEscKeydown = (evt) => {
-  if (isPressedEscapeKey(evt)) {
-    evt.preventDefault();
-    onDocumentClick();
-  }
-};
-
-function onDocumentClick() {
-  document.removeEventListener('keydown', onDocumentEscKeydown);
-  document.removeEventListener('click', onDocumentClick);
-}
-
-let message = '';
-
-const showPopup = () => {
-  document.body.append(message);
-  document.addEventListener('click', onDocumentClick);
-  document.addEventListener('keydown', onDocumentEscKeydown);
-};
-
-export const showSuccessPopup = () => {
-  message = document.querySelector('#success').content.cloneNode(true);
-  showPopup();
-};
-
-export const showErrorPopup = () => {
-  message = document.querySelector('#error').content.cloneNode(true);
-  showPopup();
-};
-
-
