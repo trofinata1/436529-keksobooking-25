@@ -151,9 +151,9 @@ export const setValue = (evt) => {
 
 // Сбрасываем маркер в начальное состояние
 export const resetMarker = () => {
-  marker.setLatLng({
+  marker.setLatLng(
     BASE_COORDS
-  });
+  );
 };
 
 // Очищаем форму
@@ -161,6 +161,14 @@ export const resetForm = () => {
   form.reset();
   resetMarker();
   range.noUiSlider.reset();
+
+  const addPopupList = document.querySelector('.leaflet-popup-pane');
+  const addPopup = document.querySelector('.leaflet-popup');
+
+  if (addPopup) {
+    addPopupList.removeChild(addPopup);
+  }
+
 };
 
 // Добавляет координаты в поле адреса
@@ -184,3 +192,12 @@ export const unblockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = 'Опубликовать';
 };
+
+// Создаем сообщение об ошибке, если данные с сервера не загрузились
+export const showDataError = () => {
+  const dataError = document.createElement('div');
+  dataError.className = 'error-block';
+  dataError.innerHTML = 'Не удалось загрузить данные';
+  document.body.append(dataError);
+};
+

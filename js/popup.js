@@ -1,5 +1,3 @@
-// import { resetForm } from './utils.js';
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 // Удалять попап по клику на кнопку
@@ -12,14 +10,21 @@ export function closePopupByButton (errorButton) {
 }
 
 // Удалять попап по нажатию на escape
-export function closePopupByEscape (error) {
+export function closePopupByEscape (popup) {
 
   document.addEventListener('keydown', (evt) => {
 
     if (isEscapeKey(evt)) {
       evt.preventDefault();
-      error.remove();
+      popup.remove();
     }
+  });
+}
+
+// Удалять попап при клике на произвольную область экрана
+export function closePopupByClick (popup) {
+  window.addEventListener('click', () => {
+    popup.remove();
   });
 }
 
@@ -36,7 +41,7 @@ export const showErrorPopup = () => {
 
   closePopupByButton(errorButton);
   closePopupByEscape(error);
-
+  closePopupByClick(error);
 };
 
 // Показываем попап при успешной отправке
@@ -46,5 +51,7 @@ export const showSuccessPopup = () => {
   document.body.append(message);
 
   const success = document.querySelector('.success');
+  
   closePopupByEscape(success);
+  closePopupByClick(success);
 };
