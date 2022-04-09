@@ -12,8 +12,7 @@ export const getData = (onSuccess) => {
     .then((response) => response.json())
 
     .then((adds) =>  {
-      // const partOfAdds = adds.slice(0, SIMILAR_ADD_COUNT);
-      // renderAdds(partOfAdds);
+
       onSuccess(adds);
 
     })
@@ -21,6 +20,7 @@ export const getData = (onSuccess) => {
     .catch(() => {
 
       showDataError();
+
     });
 };
 
@@ -29,9 +29,6 @@ export const sendData = (onSuccess, onFail, body) => {
     ' https://25.javascript.pages.academy/keksobooking',
     {
       method: 'POST',
-      // headers: {
-      //   'Content-Type': 'multipart/form-data',
-      // },
       body,
     },
   )
@@ -50,6 +47,6 @@ export const sendData = (onSuccess, onFail, body) => {
 
     .catch(() => {
 
-      onFail();
+      onFail('Не удалось отправить форму. Попробуйте ещё раз');
     });
 };
