@@ -65,3 +65,4 @@ export const BASE_COORDS = {
 };
 
 export const ZOOM = 12;
+export const ERROR_SHOW_TIME = 5000;

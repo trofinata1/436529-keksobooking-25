@@ -21,6 +21,8 @@ const formChildren = form.querySelectorAll('fieldset');
 const filterChildrenSelect = mapFilter.querySelectorAll('select');
 const filterChildrenFieldset = mapFilter.querySelectorAll('fieldset');
 export const allFormAndFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
+export const submitButton = document.querySelector('.ad-form__submit');
+export const resetButton = document.querySelector('.ad-form__reset');
 
 export const valuesDivs = [
   document.querySelector('#price')

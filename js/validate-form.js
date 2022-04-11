@@ -1,15 +1,39 @@
 import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
-
 import {form, range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage,
   typeField, priceField, typesMinPrice, timeFieldset, formInputs} from './const.js';
-import {deleteErrors, setValue} from './utils.js';
+import {blockSubmitButton, deleteErrors, setValue, unblockSubmitButton} from './utils.js';
+import {sendData} from './api.js';
 
 // Валидируем поля с помощью Пристин
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  pristine.validate();
-});
+export const setUserFormSubmit = (onSuccess, onFail) => {
+
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    pristine.validate();
+
+    if(pristine.validate()) {
+
+      blockSubmitButton();
+
+      sendData(
+
+        () => {
+          onSuccess();
+          unblockSubmitButton();
+        },
+
+        () => {
+          onFail();
+          unblockSubmitButton();
+        },
+
+        new FormData(evt.target)
+
+      );
+    }
+  });
+};
 
 // Валидируем число комнат и гостей
 const validateRooms = () => roomsOption[roomsField.value].includes(capacityField.value);

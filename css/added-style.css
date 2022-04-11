@@ -15,3 +15,9 @@
 .ad-form__element--error-up .ad-form__error-text {
   top: 100px;
 }
+
+.error-block {
+  width: 50%;
+  height: 50%;
+  border: 5px solid blueviolet;
+}

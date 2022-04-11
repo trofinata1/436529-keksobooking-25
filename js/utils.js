@@ -1,6 +1,7 @@
-import {timeFields, roomsCount, guestsCount, allFormAndFilterChildren, form, mapFilter} from './const.js';
-import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
+import {range, timeFields, roomsCount, guestsCount, form, submitButton} from './const.js';
+import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END, BASE_COORDS} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
+import {marker} from './libs/leaflet-init.js';
 
 // Случайное целое положительное число
 export const getRandomWholeNumber = (startNumber, endNumber) => {
@@ -148,25 +149,18 @@ export const setValue = (evt) => {
 
 };
 
-// Инактивация элементов
-export const disableInterface = () => {
-
-  form.classList.add('ad-form--disabled');
-  mapFilter.classList.add('map__filters--disabled');
-
-  allFormAndFilterChildren.forEach((child) => {
-    child.setAttribute('disabled', 'disabled');
+// Сбрасываем маркер в начальное состояние
+export const resetMarker = () => {
+  marker.setLatLng({
+    BASE_COORDS
   });
 };
 
-// Активация элементов
-export const enableInterface = () => {
-  form.classList.remove('ad-form--disabled');
-  mapFilter.classList.remove('map__filters--disabled');
-
-  allFormAndFilterChildren.forEach((child) => {
-    child.removeAttribute('disabled', 'disabled');
-  });
+// Очищаем форму
+export const resetForm = () => {
+  form.reset();
+  resetMarker();
+  range.noUiSlider.reset();
 };
 
 // Добавляет координаты в поле адреса
@@ -180,3 +174,47 @@ export const setAddressInput = ({lat, lng}) => {
 
   return addressInput;
 };
+
+export const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Отправляю...';
+};
+
+export const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
+
+const isPressedEscapeKey = (evt) => evt.key === 'Escape';
+
+const onDocumentEscKeydown = (evt) => {
+  if (isPressedEscapeKey(evt)) {
+    evt.preventDefault();
+    onDocumentClick();
+  }
+};
+
+function onDocumentClick() {
+  document.removeEventListener('keydown', onDocumentEscKeydown);
+  document.removeEventListener('click', onDocumentClick);
+}
+
+let message = '';
+
+const showPopup = () => {
+  document.body.append(message);
+  document.addEventListener('click', onDocumentClick);
+  document.addEventListener('keydown', onDocumentEscKeydown);
+};
+
+export const showSuccessPopup = () => {
+  message = document.querySelector('#success').content.cloneNode(true);
+  showPopup();
+};
+
+export const showErrorPopup = () => {
+  message = document.querySelector('#error').content.cloneNode(true);
+  showPopup();
+};
+
+
