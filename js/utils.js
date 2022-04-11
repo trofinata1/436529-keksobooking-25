@@ -1,4 +1,4 @@
-import {timeFields, roomsCount, guestsCount, allFormFilterChildren, form, mapFilter} from './const.js';
+import {timeFields, roomsCount, guestsCount, allFormAndFilterChildren, form, mapFilter} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 
@@ -121,7 +121,7 @@ export const setTextContent = (obj) => {
 // Удаляем блок
 export const removeBlock = (obj) => {
   Object.entries(obj).forEach(([key, value]) => {
-    if (value[key] === '') {
+    if (value[key] === '' || value[key].length === 0) {
       Object.values(value)[0].remove();
     }
   });
@@ -154,25 +154,29 @@ export const disableInterface = () => {
   form.classList.add('ad-form--disabled');
   mapFilter.classList.add('map__filters--disabled');
 
-  allFormFilterChildren.forEach((child) => {
+  allFormAndFilterChildren.forEach((child) => {
     child.setAttribute('disabled', 'disabled');
   });
 };
 
 // Активация элементов
-
-//Следующие три строчки пока только чтобы проверить, работает ли снятие неактивности при загрузке. В след. ДЗ уберу это и сделаю уже под нормальную загрузку карты с методом LeafLet 'load'
-const scriptLeaflet = document.createElement('script');
-scriptLeaflet.src = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js';
-document.body.append(scriptLeaflet);
-
 export const enableInterface = () => {
-  scriptLeaflet.onload = () => {
-    form.classList.remove('ad-form--disabled');
-    mapFilter.classList.remove('map__filters--disabled');
+  form.classList.remove('ad-form--disabled');
+  mapFilter.classList.remove('map__filters--disabled');
 
-    allFormFilterChildren.forEach((child) => {
-      child.removeAttribute('disabled', 'disabled');
-    });
-  };
+  allFormAndFilterChildren.forEach((child) => {
+    child.removeAttribute('disabled', 'disabled');
+  });
+};
+
+// Добавляет координаты в поле адреса
+export const setAddressInput = ({lat, lng}) => {
+  const addressInput = document.querySelector('#address');
+
+  const latValue = lat.toFixed(5);
+  const lngValue = lng.toFixed(5);
+
+  addressInput.value = `${latValue}, ${lngValue}`;
+
+  return addressInput;
 };

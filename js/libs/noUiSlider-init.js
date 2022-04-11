@@ -19,4 +19,5 @@ noUiSlider.create(range, {
 });
 
 range.style.width = '220px';
+range.style.height = '5px';
 range.style.margin = '10px auto 20px 0';

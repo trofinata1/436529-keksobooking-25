@@ -1,3 +1,3 @@
-import './activation-interface.js';
-import './set-similar-adds.js';
+import './inactivation-interface.js';
+import './fill-map.js';
 import './validate-form.js';

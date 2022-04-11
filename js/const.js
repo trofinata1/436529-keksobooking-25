@@ -20,7 +20,7 @@ export const mapFilter = document.querySelector('.map__filters');
 const formChildren = form.querySelectorAll('fieldset');
 const filterChildrenSelect = mapFilter.querySelectorAll('select');
 const filterChildrenFieldset = mapFilter.querySelectorAll('fieldset');
-export const allFormFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
+export const allFormAndFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
 
 export const valuesDivs = [
   document.querySelector('#price')

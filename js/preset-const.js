@@ -58,3 +58,10 @@ export const MAX_LNG_POINT = 139.80000;
 export const COORDINATE_FRACTIONAL_DIGITS = 5;
 export const COUNT_FOR_CORRECT_END = 4;
 export const AVATAR_PATH = 'img/avatars/user';
+
+export const BASE_COORDS = {
+  lat: 35.67500,
+  lng: 139.75000
+};
+
+export const ZOOM = 12;
