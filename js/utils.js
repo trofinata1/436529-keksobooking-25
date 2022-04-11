@@ -122,7 +122,7 @@ export const setTextContent = (obj) => {
 // Удаляем блок
 export const removeBlock = (obj) => {
   Object.entries(obj).forEach(([key, value]) => {
-    if (value[key] === '' || value[key].length === 0) {
+    if (value[key] === undefined || value[key].length === 0) {
       Object.values(value)[0].remove();
     }
   });
@@ -185,7 +185,7 @@ export const setAddressInput = ({lat, lng}) => {
 
 export const blockSubmitButton = () => {
   submitButton.disabled = true;
-  submitButton.textContent = 'Отправляю...';
+  submitButton.textContent = 'Отправляю';
 };
 
 export const unblockSubmitButton = () => {
@@ -197,7 +197,6 @@ export const unblockSubmitButton = () => {
 export const showDataError = () => {
   const dataError = document.createElement('div');
   dataError.className = 'error-block';
-  dataError.innerHTML = 'Не удалось загрузить данные';
+  dataError.innerHTML = 'Не удалось загрузить данные, попробуйте перезагрузить страницу';
   document.body.append(dataError);
 };
-

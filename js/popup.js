@@ -51,7 +51,7 @@ export const showSuccessPopup = () => {
   document.body.append(message);
 
   const success = document.querySelector('.success');
-  
+
   closePopupByEscape(success);
   closePopupByClick(success);
 };

@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-import {BASE_COORDS, ZOOM} from '../preset-const.js';
-import {enableInterface} from '../utils.js';
-=======
-import {setAddressInput} from '../utils.js';
-import {BASE_COORDS} from '../preset-const.js';
+import {setAddressInput, showDataError} from '../utils.js';
+import {BASE_COORDS, ZOOM, SIMILAR_ADD_COUNT} from '../preset-const.js';
 import {setAdd} from '../set-similar-adds.js';
 import {enableInterface} from '../activation-interface.js';
->>>>>>> 64cbf6e (Выполняет 11-1)
+import {getData} from '../api.js';
 
 // Добавляем карту
-const map = L.map('map')
-
-  .on('load', () => enableInterface())
-
-  .setView(BASE_COORDS, ZOOM);
+export const map = L.map('map');
 
 // Добавляем слой с нужной картой
 L.tileLayer(
@@ -85,5 +77,24 @@ export const renderAdds = (array) => {
       .addTo(map)
       .bindPopup(baloon);
   });
+
+};
+
+export const loadMap = () => {
+
+  map.on('load', () => {
+
+    getData((adds) => {
+
+      renderAdds(adds.slice(0, SIMILAR_ADD_COUNT));
+      enableInterface();
+
+    },
+
+    () => showDataError());
+    enableInterface();
+  })
+
+    .setView(BASE_COORDS, ZOOM);
 
 };

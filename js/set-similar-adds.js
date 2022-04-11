@@ -91,7 +91,7 @@ export const setAdd = (object) => {
   popupTime.textContent = `Заезд после ${checkin }, выезд до ${checkout }`;
 
   // Добавляем характеристики
-  if (features !== '') {
+  if (features !== undefined) {
 
     popupList.forEach((popupListItem) => {
       const isNecessary = features.some(
@@ -106,7 +106,7 @@ export const setAdd = (object) => {
   }
 
   // Добавляем фото
-  if (photos !== '') {
+  if (photos !== undefined) {
 
     popupPhotos.removeChild(popupPhoto);
     addPhotos(photos, popupPhoto, popupPhotos);
