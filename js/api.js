@@ -1,6 +1,4 @@
-import {showDataError} from './utils.js';
-
-export const getData = (onSuccess) => {
+export const getData = (onSuccess, onFail) => {
   fetch('https://25.javascript.pages.academy/keksobooking/data',
 
     {
@@ -17,11 +15,8 @@ export const getData = (onSuccess) => {
 
     })
 
-    .catch(() => {
+    .catch(onFail);
 
-      showDataError();
-
-    });
 };
 
 export const sendData = (onSuccess, onFail, body) => {
