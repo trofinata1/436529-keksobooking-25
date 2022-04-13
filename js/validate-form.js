@@ -2,8 +2,8 @@ import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
 
 import {range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage,
-  typeField, priceField, typesMinPrice, timeFieldset, formInputs} from './const.js';
-import {deleteErrors, setValue} from './utils.js';
+  formInputs} from './const.js';
+import {deleteErrors} from './utils.js';
 
 // Валидируем число комнат и гостей
 const validateRooms = () => roomsOption[roomsField.value].includes(capacityField.value);
@@ -32,16 +32,3 @@ range.noUiSlider.on('update', (values, handle) => {
 formInputs.forEach((input) => {
   input.addEventListener('blur', deleteErrors);
 });
-
-// Меняем плейсхолдер в зависимости от типа жилья
-typeField.addEventListener('change', () => {
-  const typeValue = typeField.value;
-  const attributeValue = typesMinPrice[typeValue];
-
-  priceField.setAttribute('min', attributeValue);
-  priceField.setAttribute('placeholder', attributeValue);
-
-});
-
-// Синхронизируем время заезда и выезда
-timeFieldset.addEventListener('change', setValue);

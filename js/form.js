@@ -1,17 +1,14 @@
 import {pristine} from './libs/pristin-init.js';
-
-import {resetButton, form} from './const.js';
-import {resetForm, blockSubmitButton, unblockSubmitButton} from './utils.js';
+import {resetButton, form, typeField, priceField, typesMinPrice, timeFieldset,} from './const.js';
+import {blockSubmitButton, isSuccessSubmit, isErrorSubmit,setValue} from './utils.js';
 import {sendData} from './api.js';
 
-// Отправляем данные из формы
-export const setUserFormSubmit = (onSuccess, onFail) => {
-
+function onSubmitButton (onSuccess, onError) {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    pristine.validate();
+    const isValid = pristine.validate();
 
-    if(pristine.validate()) {
+    if (isValid) {
 
       blockSubmitButton();
 
@@ -19,22 +16,38 @@ export const setUserFormSubmit = (onSuccess, onFail) => {
 
         () => {
           onSuccess();
-          unblockSubmitButton();
-          resetForm();
         },
 
         () => {
-          onFail();
-          unblockSubmitButton();
+          onError();
         },
 
         new FormData(evt.target)
-
       );
     }
 
   });
+}
+
+// Отправляем данные из формы
+export const setUserFormSubmit = () => {
+  onSubmitButton(isSuccessSubmit, isErrorSubmit);
 };
 
 // Очищаем форму при нажатии на кнопку сброса
-resetButton.addEventListener('click', resetForm);
+export const onClickResetButton = (cb) => {
+  resetButton.addEventListener('click', cb);
+};
+
+// Меняем плейсхолдер в зависимости от типа жилья
+typeField.addEventListener('change', () => {
+  const typeValue = typeField.value;
+  const attributeValue = typesMinPrice[typeValue];
+
+  priceField.setAttribute('min', attributeValue);
+  priceField.setAttribute('placeholder', attributeValue);
+
+});
+
+// Синхронизируем время заезда и выезда
+timeFieldset.addEventListener('change', setValue);

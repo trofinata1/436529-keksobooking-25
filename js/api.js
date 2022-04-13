@@ -1,4 +1,4 @@
-export const getData = (onSuccess, onFail) => {
+export const getData = (onSuccess, onError) => {
   fetch('https://25.javascript.pages.academy/keksobooking/data',
 
     {
@@ -15,11 +15,11 @@ export const getData = (onSuccess, onFail) => {
 
     })
 
-    .catch(onFail);
+    .catch(onError);
 
 };
 
-export const sendData = (onSuccess, onFail, body) => {
+export const sendData = (onSuccess, onError, body) => {
   fetch(
     ' https://25.javascript.pages.academy/keksobooking',
     {
@@ -35,13 +35,13 @@ export const sendData = (onSuccess, onFail, body) => {
 
       } else {
 
-        onFail('Не удалось отправить форму. Попробуйте ещё раз');
+        onError('Не удалось отправить форму. Попробуйте ещё раз');
 
       }
     })
 
     .catch(() => {
 
-      onFail('Не удалось отправить форму. Попробуйте ещё раз');
+      onError('Не удалось отправить форму. Попробуйте ещё раз');
     });
 };

@@ -2,6 +2,7 @@ import {range, timeFields, roomsCount, guestsCount, form, submitButton} from './
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END, BASE_COORDS} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 import {marker} from './libs/leaflet-init.js';
+import {showSuccessPopup, showErrorPopup} from './popup.js';
 
 // Случайное целое положительное число
 export const getRandomWholeNumber = (startNumber, endNumber) => {
@@ -172,15 +173,10 @@ export const resetForm = () => {
 };
 
 // Добавляет координаты в поле адреса
-export const setAddressInput = ({lat, lng}) => {
+export const setAddressInput = (lat,lng) => {
   const addressInput = document.querySelector('#address');
 
-  const latValue = lat.toFixed(5);
-  const lngValue = lng.toFixed(5);
-
-  addressInput.value = `${latValue}, ${lngValue}`;
-
-  return addressInput;
+  addressInput.value = `${lat}, ${lng}`;
 };
 
 export const blockSubmitButton = () => {
@@ -199,4 +195,15 @@ export const showDataError = () => {
   dataError.className = 'error-block';
   dataError.innerHTML = 'Не удалось загрузить данные, попробуйте перезагрузить страницу';
   document.body.append(dataError);
+};
+
+export const isSuccessSubmit = () => {
+  showSuccessPopup();
+  unblockSubmitButton();
+  resetForm();
+};
+
+export const isErrorSubmit = () => {
+  showErrorPopup();
+  unblockSubmitButton();
 };

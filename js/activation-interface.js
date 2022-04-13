@@ -11,8 +11,6 @@ export const disableInterface = () => {
   });
 };
 
-disableInterface();
-
 // Активация элементов
 export const enableInterface = () => {
   form.classList.remove('ad-form--disabled');
