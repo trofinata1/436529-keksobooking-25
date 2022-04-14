@@ -1,24 +1,25 @@
 import {disableInterface, enableInterface} from './activation-interface.js';
+import {mapLoaded, mainPin} from './libs/leaflet-init.js';
 import './validate-form.js';
-import {setUserFormSubmit, onClickResetButton} from './form.js';
+import {watchFormDataSubmit} from './form.js';
 import {getData} from './api.js';
-import {showDataError, resetForm} from './utils.js';
-import {getNewCoords, renderAdds, activateInterfaceByMap} from './map.js';
+import {markerMoveend} from './utils.js';
+import {renderAdds} from './fill-map.js';
+import {showDataError} from './show-error.js';
 
 // Деактивировали интерфейс
 disableInterface();
 
 // Инициализировали карту
-activateInterfaceByMap(enableInterface());
+if (mapLoaded) {
+  enableInterface();
+}
 
 // Получаем данные с сервера, отрисовываем метки и обрабатываем ошибку загрузки
 getData(renderAdds, showDataError);
 
-// Взаимодействуем с метками
-getNewCoords();
+// Взаимодействуем с главным пином
+mainPin.on('moveend', markerMoveend);
 
 // Отслеживание отправки данных
-setUserFormSubmit();
-
-// Сброс формы на кнопку
-onClickResetButton(resetForm);
+watchFormDataSubmit();

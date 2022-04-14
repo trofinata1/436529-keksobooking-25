@@ -1,8 +1,9 @@
-import {range, timeFields, roomsCount, guestsCount, form, submitButton} from './const.js';
+import {timeFields, roomsCount, guestsCount, submitButton} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END, BASE_COORDS} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
-import {marker} from './libs/leaflet-init.js';
+import {mainPin} from './libs/leaflet-init.js';
 import {showSuccessPopup, showErrorPopup} from './popup.js';
+import {onFormReset} from './form.js';
 
 // Случайное целое положительное число
 export const getRandomWholeNumber = (startNumber, endNumber) => {
@@ -142,34 +143,19 @@ export const deleteErrors = (evt) => {
 };
 
 // Синхронизация значений селектов
-export const setValue = (evt) => {
+export function setValue (evt) {
 
   timeFields.forEach((timeField) => {
     timeField.value = evt.target.value;
   });
 
-};
+}
 
 // Сбрасываем маркер в начальное состояние
 export const resetMarker = () => {
-  marker.setLatLng(
+  mainPin.setLatLng(
     BASE_COORDS
   );
-};
-
-// Очищаем форму
-export const resetForm = () => {
-  form.reset();
-  resetMarker();
-  range.noUiSlider.reset();
-
-  const addPopupList = document.querySelector('.leaflet-popup-pane');
-  const addPopup = document.querySelector('.leaflet-popup');
-
-  if (addPopup) {
-    addPopupList.removeChild(addPopup);
-  }
-
 };
 
 // Добавляет координаты в поле адреса
@@ -189,21 +175,24 @@ export const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
-// Создаем сообщение об ошибке, если данные с сервера не загрузились
-export const showDataError = () => {
-  const dataError = document.createElement('div');
-  dataError.className = 'error-block';
-  dataError.innerHTML = 'Не удалось загрузить данные, попробуйте перезагрузить страницу';
-  document.body.append(dataError);
-};
-
 export const isSuccessSubmit = () => {
   showSuccessPopup();
   unblockSubmitButton();
-  resetForm();
+  onFormReset();
 };
 
 export const isErrorSubmit = () => {
   showErrorPopup();
   unblockSubmitButton();
 };
+
+export const markerMoveend = (evt) => {
+
+  const newCoords = evt.target.getLatLng();
+
+  const lat = newCoords.lat.toFixed(5);
+  const lng = newCoords.lng.toFixed(5);
+
+  setAddressInput(lat, lng);
+};
+

@@ -4,6 +4,8 @@ import {BASE_COORDS, ZOOM} from '../preset-const.js';
 export const map = L.map('map')
   .setView(BASE_COORDS, ZOOM);
 
+export const mapLoaded = map._loaded;
+
 // Добавляем слой с нужной картой
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -20,7 +22,7 @@ const mainPinIcon = L.icon({
 });
 
 // Создаем главную метку
-export const marker = L.marker(
+export const mainPin = L.marker(
   BASE_COORDS,
   {
     draggable: true,
@@ -29,5 +31,12 @@ export const marker = L.marker(
 );
 
 // Добавляем метку на карту
-marker
+mainPin
   .addTo(map);
+
+// Внешний вид маленькой метки
+export const pinIcon = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});

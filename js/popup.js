@@ -1,16 +1,16 @@
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 // Удалять попап по клику на кнопку
-export function closePopupByButton (errorButton) {
+export const closePopupByButton = (errorButton) => {
 
   errorButton.addEventListener('click', () => {
     const error = document.querySelector('.error');
     error.remove();
   });
-}
+};
 
 // Удалять попап по нажатию на escape
-export function closePopupByEscape (popup) {
+export const closePopupByEscape = (popup) => {
 
   document.addEventListener('keydown', (evt) => {
 
@@ -19,14 +19,14 @@ export function closePopupByEscape (popup) {
       popup.remove();
     }
   });
-}
+};
 
 // Удалять попап при клике на произвольную область экрана
-export function closePopupByClick (popup) {
+export const closePopupByClick = (popup) => {
   window.addEventListener('click', () => {
     popup.remove();
   });
-}
+};
 
 // Показываем попап при ошибке
 let message;

@@ -1,6 +1,5 @@
 import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
-
 import {range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage,
   formInputs} from './const.js';
 import {deleteErrors} from './utils.js';

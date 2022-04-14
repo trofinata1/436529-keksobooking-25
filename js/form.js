@@ -1,42 +1,50 @@
 import {pristine} from './libs/pristin-init.js';
-import {resetButton, form, typeField, priceField, typesMinPrice, timeFieldset,} from './const.js';
-import {blockSubmitButton, isSuccessSubmit, isErrorSubmit,setValue} from './utils.js';
+import {form, typeField, priceField, typesMinPrice, timeFieldset, range} from './const.js';
+import {blockSubmitButton, setValue, isSuccessSubmit, isErrorSubmit, resetMarker} from './utils.js';
 import {sendData} from './api.js';
 
-function onSubmitButton (onSuccess, onError) {
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const isValid = pristine.validate();
+const onFormSubmit = (evt) => {
+  evt.preventDefault();
+  const isValid = pristine.validate();
 
-    if (isValid) {
+  if (isValid) {
 
-      blockSubmitButton();
+    blockSubmitButton();
 
-      sendData(
+    sendData(
 
-        () => {
-          onSuccess();
-        },
+      () => {
+        isSuccessSubmit();
+      },
 
-        () => {
-          onError();
-        },
+      () => {
+        isErrorSubmit();
+      },
 
-        new FormData(evt.target)
-      );
-    }
-
-  });
-}
-
-// Отправляем данные из формы
-export const setUserFormSubmit = () => {
-  onSubmitButton(isSuccessSubmit, isErrorSubmit);
+      new FormData(evt.target)
+    );
+  }
 };
 
-// Очищаем форму при нажатии на кнопку сброса
-export const onClickResetButton = (cb) => {
-  resetButton.addEventListener('click', cb);
+// Очищаем форму
+export const onFormReset = () => {
+  form.reset();
+  resetMarker();
+  range.noUiSlider.reset();
+
+  const addPopupList = document.querySelector('.leaflet-popup-pane');
+  const addPopup = document.querySelector('.leaflet-popup');
+
+  if (addPopup) {
+    addPopupList.removeChild(addPopup);
+  }
+
+};
+
+// Отправляем данные из формы
+export const watchFormDataSubmit = () => {
+  form.addEventListener('submit', onFormSubmit);
+  form.addEventListener('reset', onFormReset);
 };
 
 // Меняем плейсхолдер в зависимости от типа жилья
