@@ -4,7 +4,6 @@ export const similarAddTemplate = document.querySelector('#card')
   .querySelector('.popup');
 export const range = document.querySelector('#range');
 export const form = document.querySelector('.ad-form');
-export const titleInput = document.querySelector('#title');
 export const titleFieldset = document.querySelector('#title_fieldset');
 export const roomsField = form.querySelector('[name="rooms"]');
 export const capacityField = form.querySelector('[name="capacity"]');
@@ -27,6 +26,7 @@ export const success = document.querySelector('#success');
 export const body = document.querySelector('.page-body');
 export const errorButton = document.querySelector('.error__button');
 export const error = document.querySelector('.error');
+export const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export const valuesDivs = [
   document.querySelector('#price')
@@ -72,5 +72,3 @@ export const typesMinPrice = {
   house: '5000',
   palace: '10000'
 };
-
-export const roomsGuestsErrorMessage = 'Выберите другое значение';

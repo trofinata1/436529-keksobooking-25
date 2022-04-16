@@ -1,5 +1,7 @@
+import {FORM_ERROR_MESSAGE, GETTING_DATA_ADDRESS, SENDING_DATA_ADDRESS} from './preset-const.js';
+
 export const getData = (onSuccess, onError) => {
-  fetch('https://25.javascript.pages.academy/keksobooking/data',
+  fetch(GETTING_DATA_ADDRESS,
 
     {
       method: 'GET',
@@ -9,19 +11,22 @@ export const getData = (onSuccess, onError) => {
   )
     .then((response) => response.json())
 
-    .then((adds) =>  {
+    .then((data) =>  {
 
-      onSuccess(adds);
+      onSuccess(data);
 
     })
 
-    .catch(onError);
+    .catch((error) => {
+
+      onError(error);
+    });
 
 };
 
 export const sendData = (onSuccess, onError, body) => {
-  fetch(
-    ' https://25.javascript.pages.academy/keksobooking',
+  fetch(SENDING_DATA_ADDRESS,
+
     {
       method: 'POST',
       body,
@@ -35,13 +40,13 @@ export const sendData = (onSuccess, onError, body) => {
 
       } else {
 
-        onError('Не удалось отправить форму. Попробуйте ещё раз');
+        onError(FORM_ERROR_MESSAGE);
 
       }
     })
 
     .catch(() => {
 
-      onError('Не удалось отправить форму. Попробуйте ещё раз');
+      onError(FORM_ERROR_MESSAGE);
     });
 };

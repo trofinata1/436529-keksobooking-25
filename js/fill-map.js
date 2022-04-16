@@ -3,7 +3,7 @@ import {SIMILAR_ADD_COUNT} from './preset-const.js';
 import {setAdd} from './set-similar-adds.js';
 
 // Размещение меток объявлений на карте
-export const renderAdds = (array) => {
+export const placeAddsLabels = (array) => {
   array
     .slice()
     .slice(0, SIMILAR_ADD_COUNT)

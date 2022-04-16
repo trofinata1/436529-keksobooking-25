@@ -2,8 +2,6 @@ import {timeFields, roomsCount, guestsCount, submitButton} from './const.js';
 import {AVATAR_ARRAY, AVATAR_PATH, COUNT_FOR_CORRECT_END, BASE_COORDS} from './preset-const.js';
 import {pristine} from './libs/pristin-init.js';
 import {mainPin} from './libs/leaflet-init.js';
-import {showSuccessPopup, showErrorPopup} from './popup.js';
-import {onFormReset} from './form.js';
 
 // Случайное целое положительное число
 export const getRandomWholeNumber = (startNumber, endNumber) => {
@@ -152,14 +150,14 @@ export function setValue (evt) {
 }
 
 // Сбрасываем маркер в начальное состояние
-export const resetMarker = () => {
+export const resetPin = () => {
   mainPin.setLatLng(
     BASE_COORDS
   );
 };
 
 // Добавляет координаты в поле адреса
-export const setAddressInput = (lat,lng) => {
+const setAddressInput = (lat,lng) => {
   const addressInput = document.querySelector('#address');
 
   addressInput.value = `${lat}, ${lng}`;
@@ -175,18 +173,7 @@ export const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
-export const isSuccessSubmit = () => {
-  showSuccessPopup();
-  unblockSubmitButton();
-  onFormReset();
-};
-
-export const isErrorSubmit = () => {
-  showErrorPopup();
-  unblockSubmitButton();
-};
-
-export const markerMoveend = (evt) => {
+export const onMainPinMoveend = (evt) => {
 
   const newCoords = evt.target.getLatLng();
 
@@ -195,4 +182,3 @@ export const markerMoveend = (evt) => {
 
   setAddressInput(lat, lng);
 };
-

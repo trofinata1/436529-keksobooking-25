@@ -1,15 +1,15 @@
 import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
-import {range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, roomsGuestsErrorMessage,
-  formInputs} from './const.js';
+import {range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, formInputs} from './const.js';
+import {ROOMS_GUESTS_ERROR_MESSAGE} from './preset-const.js';
 import {deleteErrors} from './utils.js';
 
 // Валидируем число комнат и гостей
 const validateRooms = () => roomsOption[roomsField.value].includes(capacityField.value);
 const validateGuests = () => guestsOption[capacityField.value].includes(roomsField.value);
 
-pristine.addValidator(roomsField, validateRooms, roomsGuestsErrorMessage);
-pristine.addValidator(capacityField, validateGuests, roomsGuestsErrorMessage);
+pristine.addValidator(roomsField, validateRooms, ROOMS_GUESTS_ERROR_MESSAGE);
+pristine.addValidator(capacityField, validateGuests, ROOMS_GUESTS_ERROR_MESSAGE);
 
 // Привязываем значения ползунка к инпуту и убираем сообщение об ошибке, когда оно не нужно
 range.noUiSlider.on('update', (values, handle) => {

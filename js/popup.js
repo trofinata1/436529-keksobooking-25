@@ -1,57 +1,34 @@
-const isEscapeKey = (evt) => evt.key === 'Escape';
+import {isEscapeKey} from './const.js';
 
-// Удалять попап по клику на кнопку
-export const closePopupByButton = (errorButton) => {
+const onEscapeClick = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
 
-  errorButton.addEventListener('click', () => {
-    const error = document.querySelector('.error');
-    error.remove();
-  });
+    removePopupAndListeners();
+  }
 };
 
-// Удалять попап по нажатию на escape
-export const closePopupByEscape = (popup) => {
+function removePopupAndListeners() {
+  document.removeEventListener('keydown', onEscapeClick);
+  window.removeEventListener('click', onWindowClick);
+  const popup = document.querySelector('.popup');
+  popup.remove();
+}
 
-  document.addEventListener('keydown', (evt) => {
+// Удалять попап и обработчики при клике на произвольную область экрана
+function onWindowClick() {
+  removePopupAndListeners();
+}
 
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      popup.remove();
-    }
-  });
-};
+// Показываем попап
 
-// Удалять попап при клике на произвольную область экрана
-export const closePopupByClick = (popup) => {
-  window.addEventListener('click', () => {
-    popup.remove();
-  });
-};
+export const showPopup = (result) => {
 
-// Показываем попап при ошибке
-let message;
-
-export const showErrorPopup = () => {
-
-  message = document.querySelector('#error').content.cloneNode(true);
+  const template = document.querySelector(result);
+  const message = template.content.cloneNode(true);
   document.body.append(message);
 
-  const errorButton = document.querySelector('.error__button');
-  const error = document.querySelector('.error');
+  window.addEventListener('click', onWindowClick);
+  document.addEventListener('keydown', onEscapeClick);
 
-  closePopupByButton(errorButton);
-  closePopupByEscape(error);
-  closePopupByClick(error);
-};
-
-// Показываем попап при успешной отправке
-export const showSuccessPopup = () => {
-
-  message = document.querySelector('#success').content.cloneNode(true);
-  document.body.append(message);
-
-  const success = document.querySelector('.success');
-
-  closePopupByEscape(success);
-  closePopupByClick(success);
 };
