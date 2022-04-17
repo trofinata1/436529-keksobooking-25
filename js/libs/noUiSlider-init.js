@@ -1,4 +1,4 @@
-import {range} from '../const.js';
+import {range} from '../dom-nodes.js';
 
 // Инициализируем noUiSlider
 noUiSlider.create(range, {
