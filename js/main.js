@@ -1,7 +1,7 @@
 import {disableInterface, enableInterface} from './activation-interface.js';
 import {mapLoaded, mainPin} from './libs/leaflet-init.js';
 import './validate-form.js';
-import {interactionWithForm} from './form.js';
+import {interactionWithForm, loadAvatar, loadPhoto} from './form.js';
 import {getData} from './api.js';
 import {onMainPinMoveend, placeAddsLabels} from './map.js';
 import {showDataError} from './show-error-or-success.js';
@@ -20,6 +20,10 @@ getData(GETTING_DATA_URL, placeAddsLabels, showDataError);
 
 // Взаимодействуем с главным пином
 mainPin.on('moveend', onMainPinMoveend);
+
+// Добавляем фото
+loadAvatar();
+loadPhoto();
 
 // Отслеживание отправки данных
 interactionWithForm();

@@ -41,3 +41,8 @@
 .hidden {
   display: none;
 }
+
+.photo {
+  width: 70px;
+  height: 70px;
+}
