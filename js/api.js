@@ -1,7 +1,7 @@
-import {FORM_ERROR_MESSAGE, GETTING_DATA_URL, SENDING_DATA_URL} from './preset-const.js';
+import {FORM_ERROR_MESSAGE} from './const.js';
 
-export const getData = (onSuccess, onError) => {
-  fetch(GETTING_DATA_URL,
+export const getData = (url, onSuccess, onError) => {
+  fetch(url,
 
     {
       method: 'GET',
@@ -24,8 +24,8 @@ export const getData = (onSuccess, onError) => {
 
 };
 
-export const sendData = (onSuccess, onError, body) => {
-  fetch(SENDING_DATA_URL,
+export const sendData = (url, onSuccess, onError, body) => {
+  fetch(url,
 
     {
       method: 'POST',

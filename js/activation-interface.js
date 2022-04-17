@@ -1,4 +1,10 @@
-import {form, mapFilter, allFormAndFilterChildren} from './const.js';
+import {form, mapFilter} from './dom-nodes.js';
+
+const formChildren = form.querySelectorAll('fieldset');
+const filterChildrenSelect = mapFilter.querySelectorAll('select');
+const filterChildrenFieldset = mapFilter.querySelectorAll('fieldset');
+
+const allFormAndFilterChildren = [...formChildren, ...filterChildrenSelect, ...filterChildrenFieldset];
 
 // Инактивация элементов
 export const disableInterface = () => {

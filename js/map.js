@@ -1,7 +1,9 @@
-import {pinIcon, map, mainPin} from './libs/leaflet-init.js';
-import {SIMILAR_ADD_COUNT, BASE_COORDS, COORDINATE_FRACTIONAL_DIGITS} from './preset-const.js';
+import {pinIcon, map, mainPin, BASE_COORDS} from './libs/leaflet-init.js';
 import {setAdd} from './set-similar-adds.js';
 import {setAddressInput} from './utils.js';
+
+const COORDINATE_FRACTIONAL_DIGITS = 5;
+const SIMILAR_ADD_COUNT = 10;
 
 // Размещение меток объявлений на карте
 export const placeAddsLabels = (array) => {

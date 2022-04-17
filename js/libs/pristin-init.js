@@ -1,4 +1,4 @@
-import {form} from '../const.js';
+import {form} from '../dom-nodes.js';
 
 // Инициализируем pristine
 export const pristine = new Pristine(form, {

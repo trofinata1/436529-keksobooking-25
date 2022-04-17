@@ -1,4 +1,4 @@
-import {isEscapeKey} from './const.js';
+import {isEscapeKey} from './utils.js';
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -10,7 +10,7 @@ const onDocumentKeydown = (evt) => {
 
 function removePopupAndListeners() {
   document.removeEventListener('keydown', onDocumentKeydown);
-  window.removeEventListener('click', onDocumentClick);
+  document.removeEventListener('click', onDocumentClick);
   const popup = document.querySelector('.popup');
   popup.remove();
 }

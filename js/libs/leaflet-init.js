@@ -1,4 +1,9 @@
-import {BASE_COORDS, ZOOM} from '../preset-const.js';
+export const BASE_COORDS = {
+  lat: 35.67500,
+  lng: 139.75000
+};
+
+const ZOOM = 12;
 
 // Добавляем карту
 export const map = L.map('map')
@@ -34,7 +39,6 @@ export const mainPin = L.marker(
 mainPin
   .addTo(map);
 
-// Внешний вид маленькой метки
 export const pinIcon = L.icon({
   iconUrl: '../img/pin.svg',
   iconSize: [40, 40],
