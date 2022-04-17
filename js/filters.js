@@ -1,6 +1,5 @@
-import {markerGroup} from './map.js';
+import {markerGroup, placeAddsLabels} from './map.js';
 import {debounce} from './debounce.js';
-import {placeAddsLabels} from './map.js';
 
 export const mapFilter = document.querySelector('.map__filters');
 const filterRoomsField = document.querySelector('#housing-rooms');
