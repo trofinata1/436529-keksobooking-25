@@ -2,7 +2,6 @@ import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
 import {range, capacityField, roomsField, roomsOption, guestsOption, valuesDivs, formInputs} from './const.js';
 import {ROOMS_GUESTS_ERROR_MESSAGE} from './preset-const.js';
-import {deleteErrors} from './utils.js';
 
 // Валидируем число комнат и гостей
 const validateRooms = () => roomsOption[roomsField.value].includes(capacityField.value);
@@ -26,6 +25,18 @@ range.noUiSlider.on('update', (values, handle) => {
     pristine.reset();
   }
 });
+
+// Функция для удаления ошибок пристины
+export const deleteErrors = (evt) => {
+
+  const errorMessage = evt.target.nextElementSibling;
+
+  if (errorMessage.matches('.pristine-error')) {
+
+    pristine.reset();
+
+  }
+};
 
 // Убираем сообщение об ошибке при отсутствии фокуса
 formInputs.forEach((input) => {

@@ -1,5 +1,5 @@
 import {showPopup} from './popup.js';
-import {unblockSubmitButton} from './utils.js';
+import {unblockSubmitButton} from './form.js';
 import {onFormReset} from './form.js';
 
 // Создаем сообщение об ошибке, если данные с сервера не загрузились

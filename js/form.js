@@ -1,8 +1,19 @@
 import {pristine} from './libs/pristin-init.js';
-import {form, typeField, priceField, typesMinPrice, timeFieldset, range} from './const.js';
-import {blockSubmitButton, setValue, resetPin} from './utils.js';
+import {form, typeField, priceField, timeFieldset, range, submitButton,timeFields} from './const.js';
+import {TYPES_NIN_PRICE} from './preset-const.js';
 import {sendData} from './api.js';
 import {onSuccessSubmit, onErrorSubmit,} from './show-error-or-success.js';
+import {resetPin} from './map.js';
+
+export const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Отправляю';
+};
+
+export const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
 
 const onFormSubmit = (evt) => {
   evt.preventDefault();
@@ -42,12 +53,21 @@ export const interactionWithForm = () => {
 // Меняем плейсхолдер в зависимости от типа жилья
 typeField.addEventListener('change', () => {
   const typeValue = typeField.value;
-  const attributeValue = typesMinPrice[typeValue];
+  const attributeValue = TYPES_NIN_PRICE[typeValue];
 
   priceField.setAttribute('min', attributeValue);
   priceField.setAttribute('placeholder', attributeValue);
 
 });
+
+// Синхронизация значений селектов
+export const setValue = (evt) => {
+
+  timeFields.forEach((timeField) => {
+    timeField.value = evt.target.value;
+  });
+
+};
 
 // Синхронизируем время заезда и выезда
 timeFieldset.addEventListener('change', setValue);

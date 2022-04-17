@@ -1,4 +1,5 @@
-import {similarAddTemplate, types} from './const.js';
+import {similarAddTemplate} from './const.js';
+import {TYPES} from './preset-const.js';
 import {getCorrectKeyForRooms, getCorrectKeyForGuests, addPhotos, removeBlock, setTextContent} from './utils.js';
 
 export const setAdd = (object) => {
@@ -82,7 +83,7 @@ export const setAdd = (object) => {
   popupPrice.textContent = `${price  } ₽/ночь`;
 
   // Добавляем тип жилища
-  popupType.textContent = types[type];
+  popupType.textContent = TYPES[type];
 
   // Добавляем сообщение с кол-вом комнат и гостей
   popupCapacity.textContent = `${rooms } ${getCorrectKeyForRooms(rooms) } для ${guests } ${getCorrectKeyForGuests(guests) }`;

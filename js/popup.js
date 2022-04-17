@@ -1,6 +1,6 @@
 import {isEscapeKey} from './const.js';
 
-const onEscapeClick = (evt) => {
+const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
 
@@ -9,26 +9,26 @@ const onEscapeClick = (evt) => {
 };
 
 function removePopupAndListeners() {
-  document.removeEventListener('keydown', onEscapeClick);
-  window.removeEventListener('click', onWindowClick);
+  document.removeEventListener('keydown', onDocumentKeydown);
+  window.removeEventListener('click', onDocumentClick);
   const popup = document.querySelector('.popup');
   popup.remove();
 }
 
 // Удалять попап и обработчики при клике на произвольную область экрана
-function onWindowClick() {
+function onDocumentClick() {
   removePopupAndListeners();
 }
 
 // Показываем попап
 
-export const showPopup = (result) => {
+export const showPopup = (querySelector) => {
 
-  const template = document.querySelector(result);
-  const message = template.content.cloneNode(true);
-  document.body.append(message);
+  const template = document.querySelector(querySelector);
+  const popup = template.content.cloneNode(true);
+  document.body.append(popup);
 
-  window.addEventListener('click', onWindowClick);
-  document.addEventListener('keydown', onEscapeClick);
+  document.addEventListener('click', onDocumentClick);
+  document.addEventListener('keydown', onDocumentKeydown);
 
 };
