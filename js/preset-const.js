@@ -1,5 +1,4 @@
 export const SIMILAR_ADD_COUNT = 10;
-export const MAX_PRICE = 10000;
 export const COORDINATE_FRACTIONAL_DIGITS = 5;
 export const COUNT_FOR_CORRECT_END = 4;
 
@@ -29,5 +28,5 @@ export const ZOOM = 12;
 export const FORM_ERROR_MESSAGE = 'Не удалось отправить форму. Попробуйте ещё раз';
 export const ROOMS_GUESTS_ERROR_MESSAGE = 'Выберите другое значение';
 
-export const GETTING_DATA_ADDRESS = 'https://25.javascript.pages.academy/keksobooking/data';
-export const SENDING_DATA_ADDRESS = 'https://25.javascript.pages.academy/keksobooking';
+export const GETTING_DATA_URL = 'https://25.javascript.pages.academy/keksobooking/data';
+export const SENDING_DATA_URL = 'https://25.javascript.pages.academy/keksobooking';

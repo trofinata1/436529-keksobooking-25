@@ -1,5 +1,5 @@
 import {pinIcon, map, mainPin} from './libs/leaflet-init.js';
-import {SIMILAR_ADD_COUNT, BASE_COORDS} from './preset-const.js';
+import {SIMILAR_ADD_COUNT, BASE_COORDS, COORDINATE_FRACTIONAL_DIGITS} from './preset-const.js';
 import {setAdd} from './set-similar-adds.js';
 import {setAddressInput} from './utils.js';
 
@@ -42,8 +42,8 @@ export const onMainPinMoveend = (evt) => {
 
   const newCoords = evt.target.getLatLng();
 
-  const lat = newCoords.lat.toFixed(5);
-  const lng = newCoords.lng.toFixed(5);
+  const lat = newCoords.lat.toFixed(COORDINATE_FRACTIONAL_DIGITS);
+  const lng = newCoords.lng.toFixed(COORDINATE_FRACTIONAL_DIGITS);
 
   setAddressInput(lat, lng);
 };
