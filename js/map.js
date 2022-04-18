@@ -3,7 +3,11 @@ import {setAdd} from './set-similar-adds.js';
 import {setAddressInput} from './utils.js';
 
 const COORDINATE_FRACTIONAL_DIGITS = 5;
+
 const SIMILAR_ADD_COUNT = 10;
+
+// Добавляем слой для пинов
+export const markerGroup = L.layerGroup().addTo(map);
 
 // Размещение меток объявлений на карте
 export const placeAddsLabels = (array) => {
@@ -28,7 +32,7 @@ export const placeAddsLabels = (array) => {
       const balloon = setAdd(similarAdd);
 
       pin
-        .addTo(map)
+        .addTo(markerGroup)
         .bindPopup(balloon);
     });
 };
