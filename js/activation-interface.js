@@ -1,4 +1,5 @@
-import {form, mapFilter} from './dom-nodes.js';
+import {form} from './dom-nodes.js';
+import {mapFilter} from './filters.js';
 
 const formChildren = form.querySelectorAll('fieldset');
 const filterChildrenSelect = mapFilter.querySelectorAll('select');

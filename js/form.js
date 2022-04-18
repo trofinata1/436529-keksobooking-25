@@ -4,6 +4,7 @@ import {sendData} from './api.js';
 import {resetPin} from './map.js';
 import {onSuccessSubmit, onErrorSubmit,} from './show-error-or-success.js';
 import {SENDING_DATA_URL} from './const.js';
+import {mapFilter} from './filters.js';
 
 const TYPES_NIN_PRICE = {
   bungalow: '0',
@@ -50,7 +51,7 @@ export const onFormReset = () => {
   form.reset();
   resetPin();
   range.noUiSlider.reset();
-  photoField.innerHTML = '';
+  mapFilter.reset();
 
   const addPopupList = document.querySelector('.leaflet-popup-pane');
   const addPopup = document.querySelector('.leaflet-popup');
