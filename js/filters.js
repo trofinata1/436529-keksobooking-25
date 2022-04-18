@@ -49,22 +49,16 @@ export const filterFeatures = ({offer}) => {
 
 const filterAdds = (adds) => adds.filter((add) => (filterType(add) && filterPrice(add) && filterRooms(add) && filterGuests(add) && filterFeatures(add)));
 
-export const setFilters = (cb) => {
-
-  mapFilter.addEventListener('change', () => {
-    cb();
-    markerGroup.clearLayers();
-
-  });
-
-};
-
 // Заполняем карту фильтрованными метками
 export const fillMapFilteredAdds = (data) => {
   placeAddsLabels(data);
 
-  setFilters(debounce(
-    () => placeAddsLabels(filterAdds(data)),
-  ));
+  mapFilter.addEventListener(
+    'change',
+    debounce(() => {
+      markerGroup.clearLayers();
+      placeAddsLabels(filterAdds(data));
+    })
 
+  );
 };

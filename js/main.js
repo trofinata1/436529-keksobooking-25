@@ -16,6 +16,7 @@ if (mapLoaded) {
   enableInterface();
 }
 
+
 // Получили данные и разместили метки на карте (с возможностью фильтрации)
 getData(GETTING_DATA_URL, fillMapFilteredAdds, showDataError);
 
