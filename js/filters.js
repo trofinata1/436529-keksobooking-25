@@ -26,20 +26,13 @@ const priceLevels = {
   },
 };
 
-export const filterType = ({offer}) => {
-  if (filterTypeField.value === 'any') {
-    return offer;
-  }
-  if (offer.type === filterTypeField.value) {
-    return offer;
-  }
-};
+export const filterType = ({offer}) => filterTypeField.value === 'any' || offer.type === filterTypeField.value;
 
 export const filterPrice = ({offer}) => offer.price >= priceLevels[filterPriceField.value].min && offer.price <= priceLevels[filterPriceField.value].max;
 
-export const filterRooms = ({offer}) => (filterRoomsField.value === 'any') ? offer : offer.rooms === Number(filterRoomsField.value);
+export const filterRooms = ({offer}) => (filterRoomsField.value === 'any') ? true : offer.rooms === Number(filterRoomsField.value);
 
-export const filterGuests = ({offer}) => (filterGuestsField.value === 'any') ? offer : offer.guests === Number(filterGuestsField.value);
+export const filterGuests = ({offer}) => (filterGuestsField.value === 'any') ? true : offer.guests === Number(filterGuestsField.value);
 
 export const filterFeatures = ({offer}) => {
   const features = [];
@@ -57,10 +50,13 @@ export const filterFeatures = ({offer}) => {
 const filterAdds = (adds) => adds.filter((add) => (filterType(add) && filterPrice(add) && filterRooms(add) && filterGuests(add) && filterFeatures(add)));
 
 export const setFilters = (cb) => {
+
   mapFilter.addEventListener('change', () => {
-    markerGroup.clearLayers();
     cb();
+    markerGroup.clearLayers();
+
   });
+
 };
 
 // Заполняем карту фильтрованными метками
