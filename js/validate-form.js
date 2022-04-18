@@ -1,6 +1,6 @@
 import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
-import {range, capacityField, roomsField, formInputs, priceField} from './dom-nodes.js';
+import {range, capacityField, roomsField, formInputs, priceField, titleField} from './dom-nodes.js';
 import {ROOMS_GUESTS_ERROR_MESSAGE} from './const.js';
 
 export const roomsOption = {
@@ -23,6 +23,9 @@ const validateGuests = () => guestsOption[capacityField.value].includes(roomsFie
 
 pristine.addValidator(roomsField, validateRooms, ROOMS_GUESTS_ERROR_MESSAGE);
 pristine.addValidator(capacityField, validateGuests, ROOMS_GUESTS_ERROR_MESSAGE);
+
+const validateMaxTitleMessage = () => titleField.value.length <= 99;
+pristine.addValidator(titleField, validateMaxTitleMessage, 'Не больше 100 символов');
 
 // Привязываем значения ползунка к инпуту и убираем сообщение об ошибке, когда оно не нужно
 range.noUiSlider.on('update', (values, handle) => {
