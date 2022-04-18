@@ -15,12 +15,13 @@ const TYPES_NIN_PRICE = {
 };
 
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+const DEFAULT_AVATAR = 'img/muffin-grey.svg';
 
+export const fileAvatarChooser = document.querySelector('.ad-form__field input[type=file]');
+export const filePhotoChooser = document.querySelector('.ad-form__upload input[type=file]');
+export const photoPreview = document.querySelector('.ad-form__photo-preview');
+export const avatarPreview = document.querySelector('.ad-form-header__preview img');
 const submitButton = document.querySelector('.ad-form__submit');
-const photoField = document.querySelector('.ad-form__photo');
-const fileAvatarChooser = document.querySelector('.ad-form__field input[type=file]');
-const avatarPreview = document.querySelector('.ad-form-header__preview img');
-const filePhotoChooser = document.querySelector('.ad-form__upload input[type=file]');
 
 export const blockSubmitButton = () => {
   submitButton.disabled = true;
@@ -52,6 +53,8 @@ export const onFormReset = () => {
   resetPin();
   range.noUiSlider.reset();
   mapFilter.reset();
+  avatarPreview.src = DEFAULT_AVATAR;
+  photoPreview.src = DEFAULT_AVATAR;
 
   const addPopupList = document.querySelector('.leaflet-popup-pane');
   const addPopup = document.querySelector('.leaflet-popup');
@@ -90,38 +93,18 @@ const onTimeFieldsetChange = (evt) => {
 // Синхронизируем время заезда и выезда
 timeFieldset.addEventListener('change', onTimeFieldsetChange);
 
-// Загружаем аватар
-export const loadAvatar = () => {
-  fileAvatarChooser.addEventListener('change', () => {
+// Добавляем просмотр картинки
+export const onImageAreaLoad = (fileChooser, preview) => {
+  fileChooser.addEventListener('change', () => {
 
-    const file = fileAvatarChooser.files[0];
+    const file = fileChooser.files[0];
     const fileName = file.name.toLowerCase();
 
     const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
 
     if (matches) {
-      avatarPreview.src = URL.createObjectURL(file);
+      preview.src = URL.createObjectURL(file);
     }
   });
 };
 
-// Загружаем фото
-export const loadPhoto = () => {
-  filePhotoChooser.addEventListener('change', () => {
-
-    const file = filePhotoChooser.files[0];
-    const fileName = file.name.toLowerCase();
-
-    const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
-
-    if (matches) {
-      const photo = document.createElement('img');
-      photoField.appendChild(photo);
-
-      const photoPreview = document.querySelector('.ad-form__photo img');
-      photoPreview.classList.add('photo');
-
-      photoPreview.src = URL.createObjectURL(file);
-    }
-  });
-};
