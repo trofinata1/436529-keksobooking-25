@@ -42,7 +42,8 @@
   display: none;
 }
 
-.photo {
-  width: 70px;
-  height: 70px;
+.ad-form__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
