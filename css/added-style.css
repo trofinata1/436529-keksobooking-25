@@ -41,3 +41,9 @@
 .hidden {
   display: none;
 }
+
+.ad-form__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

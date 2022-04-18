@@ -14,6 +14,13 @@ const TYPES_NIN_PRICE = {
   palace: '10000'
 };
 
+const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+const DEFAULT_AVATAR = 'img/muffin-grey.svg';
+
+export const fileAvatarChooser = document.querySelector('.ad-form__field input[type=file]');
+export const filePhotoChooser = document.querySelector('.ad-form__upload input[type=file]');
+export const photoPreview = document.querySelector('.ad-form__photo-preview');
+export const avatarPreview = document.querySelector('.ad-form-header__preview img');
 const submitButton = document.querySelector('.ad-form__submit');
 
 export const blockSubmitButton = () => {
@@ -46,6 +53,8 @@ export const onFormReset = () => {
   resetPin();
   range.noUiSlider.reset();
   mapFilter.reset();
+  avatarPreview.src = DEFAULT_AVATAR;
+  photoPreview.src = DEFAULT_AVATAR;
 
   const addPopupList = document.querySelector('.leaflet-popup-pane');
   const addPopup = document.querySelector('.leaflet-popup');
@@ -83,3 +92,19 @@ const onTimeFieldsetChange = (evt) => {
 
 // Синхронизируем время заезда и выезда
 timeFieldset.addEventListener('change', onTimeFieldsetChange);
+
+// Добавляем просмотр картинки
+export const onImageAreaLoad = (fileChooser, preview) => {
+  fileChooser.addEventListener('change', () => {
+
+    const file = fileChooser.files[0];
+    const fileName = file.name.toLowerCase();
+
+    const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+
+    if (matches) {
+      preview.src = URL.createObjectURL(file);
+    }
+  });
+};
+
