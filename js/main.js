@@ -1,7 +1,7 @@
 import {disableInterface, enableInterface, disabledFilter} from './activation-interface.js';
 import {mapLoaded, mainPin} from './libs/leaflet-init.js';
 import './validate-form.js';
-import {interactionWithForm, onImageAreaLoad, fileAvatarChooser, avatarPreview, filePhotoChooser, photoPreview} from './form.js';
+import {interactWithForm, onImageAreaLoad, fileAvatarChooser, avatarPreview, filePhotoChooser, photoPreview} from './form.js';
 import {getData} from './api.js';
 import {onMainPinMoveend} from './map.js';
 import {GETTING_DATA_URL} from './const.js';
@@ -26,4 +26,4 @@ onImageAreaLoad(fileAvatarChooser, avatarPreview);
 onImageAreaLoad(filePhotoChooser, photoPreview);
 
 // Отслеживание отправки данных
-interactionWithForm();
+interactWithForm();

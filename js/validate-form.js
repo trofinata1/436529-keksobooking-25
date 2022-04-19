@@ -41,7 +41,7 @@ export const onInputBlur = (evt) => {
 
   const errorMessage = evt.target.nextElementSibling;
 
-  if (errorMessage.matches('.pristine-error')) {
+  if (errorMessage) {
 
     pristine.reset();
 
@@ -49,6 +49,8 @@ export const onInputBlur = (evt) => {
 };
 
 // Убираем сообщение об ошибке при отсутствии фокуса
+
+
 formInputs.forEach((input) => {
   input.addEventListener('blur', onInputBlur);
 });

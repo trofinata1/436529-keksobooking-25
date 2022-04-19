@@ -68,7 +68,7 @@ export const onFormReset = () => {
 };
 
 // Взаимодействие с формой
-export const interactionWithForm = () => {
+export const interactWithForm = () => {
   form.addEventListener('submit', onFormSubmit);
   form.addEventListener('reset', onFormReset);
 };
