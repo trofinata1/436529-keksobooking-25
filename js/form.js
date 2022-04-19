@@ -6,7 +6,7 @@ import {onSuccessSubmit, onErrorSubmit, showDataError} from './show-error-or-suc
 import {SENDING_DATA_URL, GETTING_DATA_URL} from './const.js';
 import {mapFilter, fillMapFilteredAdds} from './filters.js';
 
-const TYPES_NIN_PRICE = {
+export const TYPES_NIN_PRICE = {
   bungalow: '0',
   flat: '1000',
   hotel: '3000',

@@ -1,7 +1,15 @@
 import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
-import {range, capacityField, roomsField, formInputs, priceField, titleField} from './dom-nodes.js';
+import {range, capacityField, roomsField, formInputs, priceField, titleField, typeField} from './dom-nodes.js';
 import {ROOMS_GUESTS_ERROR_MESSAGE} from './const.js';
+
+const TYPES_NIN_PRICE = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000
+};
 
 export const roomsOption = {
   '1': ['1'],
@@ -24,6 +32,11 @@ const validateGuests = () => guestsOption[capacityField.value].includes(roomsFie
 pristine.addValidator(roomsField, validateRooms, ROOMS_GUESTS_ERROR_MESSAGE);
 pristine.addValidator(capacityField, validateGuests, ROOMS_GUESTS_ERROR_MESSAGE);
 
+// Валидируем поле с ценой на минимум
+const validateMinPrice = () => priceField.value >= TYPES_NIN_PRICE[typeField.value];
+pristine.addValidator(priceField, validateMinPrice, 'Слишком маленькое число');
+
+// Валидируем поле с названием на максимум знаков
 const validateMaxTitleMessage = () => titleField.value.length <= 99;
 pristine.addValidator(titleField, validateMaxTitleMessage, 'Не больше 100 символов');
 
@@ -49,8 +62,6 @@ export const onInputBlur = (evt) => {
 };
 
 // Убираем сообщение об ошибке при отсутствии фокуса
-
-
 formInputs.forEach((input) => {
   input.addEventListener('blur', onInputBlur);
 });
