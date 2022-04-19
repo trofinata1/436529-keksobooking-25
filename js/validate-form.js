@@ -2,14 +2,7 @@ import './libs/noUiSlider-init.js';
 import {pristine} from './libs/pristin-init.js';
 import {range, capacityField, roomsField, formInputs, priceField, titleField, typeField} from './dom-nodes.js';
 import {ROOMS_GUESTS_ERROR_MESSAGE} from './const.js';
-
-const TYPES_NIN_PRICE = {
-  bungalow: 0,
-  flat: 1000,
-  hotel: 3000,
-  house: 5000,
-  palace: 10000
-};
+import {TYPES_MIN_PRICE} from './form.js';
 
 export const roomsOption = {
   '1': ['1'],
@@ -33,7 +26,7 @@ pristine.addValidator(roomsField, validateRooms, ROOMS_GUESTS_ERROR_MESSAGE);
 pristine.addValidator(capacityField, validateGuests, ROOMS_GUESTS_ERROR_MESSAGE);
 
 // Валидируем поле с ценой на минимум
-const validateMinPrice = () => priceField.value >= TYPES_NIN_PRICE[typeField.value];
+const validateMinPrice = () => priceField.value >= TYPES_MIN_PRICE[typeField.value];
 pristine.addValidator(priceField, validateMinPrice, 'Слишком маленькое число');
 
 // Валидируем поле с названием на максимум знаков
